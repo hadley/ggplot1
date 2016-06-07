@@ -33,7 +33,8 @@ position_categorical <- function(variable="x", name="", expand=c(0, 0.5)) {
 }
 
 
-scale_categorical <- function(variable="x", name="", expand=c(0,0), transform="as.numeric", ...) {
+scale_categorical <- function(variable="x", name="", expand=c(0,0), transform=as.numeric, ...) {
+  stopifnot(is.function(transform))
 	structure(
 		list(variable=variable, name=name, expand=expand, transform=transform, args=list(...)),
 		class = c("categorical", "scale")
@@ -50,7 +51,7 @@ scale_categorical <- function(variable="x", name="", expand=c(0,0), transform="a
 
 	uval <- sort(unique(val))
 	attributes(uval) <- attributes(val)
-	x$map <- do.call(match.fun(x$transform), c(list(uval), x$args))
+	x$map <- do.call(x$transform, c(list(uval), x$args))
 	names(x$map) <- levels(val)
 	x
 }
@@ -137,14 +138,14 @@ sccolour <- function(plot = .PLOT, name="", h=c(0,360), l=65, c=100, alpha=1) {
 #' @rdname sccolour
 #' @export
 sccolor <- sccolour
-scale_colour <- function(name="", h=c(0, 360), l=65, c=100, alpha=1) scale_categorical("colour", name=name, h=h, l=l, c=c, transform="map_colour", alpha=alpha)
+scale_colour <- function(name="", h=c(0, 360), l=65, c=100, alpha=1) scale_categorical("colour", name=name, h=h, l=l, c=c, transform=map_colour, alpha=alpha)
 
 #' @rdname sccolour
 #' @export
 scfill <- function(plot = .PLOT, name="", h=c(0,360), l=75, c=100, alpha=1) {
 	add_scale(plot, scale_fill(name=name, h=h, l=l, c=c, alpha=alpha))
 }
-scale_fill <- function(name="", h=c(0,360), l=75, c=100, alpha=1) scale_categorical("fill", name=name, h=h, l=l, c=c, transform="map_colour", alpha=alpha)
+scale_fill <- function(name="", h=c(0,360), l=75, c=100, alpha=1) scale_categorical("fill", name=name, h=h, l=l, c=c, transform=map_colour, alpha=alpha)
 
 #' Scale: Brewer colours
 #' Use Brewer colour scheme for colour fill.
@@ -157,7 +158,7 @@ scale_fill <- function(name="", h=c(0,360), l=75, c=100, alpha=1) scale_categori
 scfillbrewer <- function(plot = .PLOT, name="", palette=1) {
 	add_scale(plot, scale_fill_brewer(name=name, palette=palette))
 }
-scale_fill_brewer <- function(name="", palette=1) scale_categorical("fill", name=name, palette=palette, transform="map_colour_brewer")
+scale_fill_brewer <- function(name="", palette=1) scale_categorical("fill", name=name, palette=palette, transform=map_colour_brewer)
 
 #' Scale: shape
 #'
@@ -175,7 +176,7 @@ scale_fill_brewer <- function(name="", palette=1) scale_categorical("fill", name
 scshape <- function(plot = .PLOT, name="", solid=TRUE) {
 	add_scale(plot, scale_shape(name=name, solid))
 }
-scale_shape <- function(name="", solid=TRUE) scale_categorical("shape", name=name, solid=solid, transform="map_shape")
+scale_shape <- function(name="", solid=TRUE) scale_categorical("shape", name=name, solid=solid, transform=map_shape)
 
 
 #' Scale: line type
@@ -193,4 +194,4 @@ scale_shape <- function(name="", solid=TRUE) scale_categorical("shape", name=nam
 sclinetype <- function(plot = .PLOT, name="") {
 	add_scale(plot, scale_linetype(name=name))
 }
-scale_linetype <- function(name="") scale_categorical("linetype", name=name, transform="map_linetype")
+scale_linetype <- function(name="") scale_categorical("linetype", name=name, transform=map_linetype)

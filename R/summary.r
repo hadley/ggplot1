@@ -1,7 +1,4 @@
-# Summarise ggplot object
-# Displays a useful description of a ggplot object
-#
-# @keyword internal
+#' @export
 summary.ggplot <- function(object, ...) {
   defaults <- function() {
     paste(mapply(function(x, n) {

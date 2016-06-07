@@ -66,6 +66,7 @@ map_aesthetic.scale <- function(scale, data, ...) data
 # @alias input.ps_map
 # @alias input.scale_cont_colour
 input <- function(scale) UseMethod("input", scale)
+#' @export
 input.scale  <- function(scale) scale$variable
 
 # Output
@@ -78,6 +79,7 @@ input.scale  <- function(scale) scale$variable
 # @alias output.ps_map
 # @alias output.scale_cont_colour
 output <- function(scale) UseMethod("output", scale)
+#' @export
 output.scale <- function(scale) scale$variable
 
 # Update
@@ -97,6 +99,7 @@ output.scale <- function(scale) scale$variable
 # @alias update<-.scale_cont_colour
 # @alias update<-.manual
 "update<-" <- function(x, value) UseMethod("update<-")
+#' @export
 "update<-.scale" <- function(x, value) x
 
 # Scale range
@@ -106,6 +109,7 @@ output.scale <- function(scale) scale$variable
 # @arguments unused
 # @keyword manip
 # @keyword internal
+#' @export
 range.scale <- function(x, ...) x$from
 
 
@@ -120,6 +124,7 @@ range.scale <- function(x, ...) x$from
 # @alias defaultgrob.gradient
 # @alias defaultgrob.default
 defaultgrob <- function(x) UseMethod("defaultgrob")
+#' @export
 defaultgrob.default <- function(x) function(x) grob_point(x, unique=FALSE)
 
 # Scale breaks
@@ -144,6 +149,7 @@ breaks  <- function(scale, ...) UseMethod("breaks")
 # @arguments unused
 # @keyword manip
 # @keyword internal
+#' @export
 print.scale <- function(x, ...) {
 	cat(paste("Scale: ", scale_mapping(x), "\n", sep=""))
 }

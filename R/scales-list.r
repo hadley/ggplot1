@@ -18,10 +18,16 @@
 scales <- function(...) {
 	structure(list(...), class="scales")
 }
+
+#' @export
 input.scales <- function(scale)  lapply(scale, input)
+#' @export
 output.scales <- function(scale) lapply(scale, output)
+#' @export
 print.scales <- function(x, ...) utils::str(x)
+#' @export
 range.scales <- function(scales, ...) position_apply(scales, range)
+#' @export
 guides.scales <- function(scale, ...) {
 	position_apply(scale, guides)
 }

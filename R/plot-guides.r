@@ -134,13 +134,7 @@ legends <- function(scales, horizontal = FALSE) {
 	fg
 }
 
-# Default guides
-# Construct a default guide (legend) for a scale
-#
-# This is used for automatic legends.
-#
-# @arguments scale
-# @keyword hplot
+#' @export
 guides.default <- function(scale, ...) {
 	#if (scale$visible == FALSE) return()
 

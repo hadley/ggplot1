@@ -26,27 +26,27 @@ scale_manual <- function(name="", variable="x", breaks=NULL, labels=labels, grob
 		class = c("manual", "scale")
 	)
 }
+#' @export
 "update<-.manual" <- function(x, value) x
+#' @export
 map_aesthetic.manual <- function(scale, data, ...) {
 	if (length(intersect(names(data), input(scale))) < length(input(scale))) return(data.frame())
 	data[,input(scale), drop=FALSE]
 }
+#' @export
 breaks.manual <- function(scale, ...) scale$breaks
+#' @export
 labels.manual <- function(object, ...) scale$labels
 
 
-# Print manual details
-# Print moderately useful details of this manual scale.
-#
-# @arguments scale object
-# @arguments not used
-# @keyword manip
-# @keyword internal
+#' @export
 print.manual <- function(x, ...) {
 	cat(paste("manual scale: ", scale_mapping(x), "\n", sep=""))
 }
 
+#' @export
 defaultgrob.manual <- function(x) x$grob
+#' @export
 guides.manual <- function(scale, ...) {
   if(is.null(scale$labels)) return()
   guides.default(scale, ...)
