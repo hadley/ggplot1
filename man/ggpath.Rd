@@ -41,6 +41,7 @@ Other options:
 }
 }
 \examples{
+library(ggplot2movies)
 myear <- do.call(rbind, by(movies, movies$year, function(df) data.frame(
   year = df$year[1],
   mean.length = mean(df$length),

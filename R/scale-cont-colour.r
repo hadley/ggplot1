@@ -72,13 +72,10 @@ scale_fill_rgb <- function(name="", to=list()) scale_cont_colour(name=name, vari
 #' @inheritParams scrgb
 #' @export
 #' @examples
-#' p <- schcl(ggplot(movies, aes=list(y=rating, x=year)))
-#' ggpoint(p, list(h=year))
-#' schcl(ggpoint(p, list(h=year)), list(h.to=c(45,60)))
-#' ggpoint(p, list(c=rating))
-#' ggpoint(p, list(l=length))
-#' ggpoint(p, list(h=rating, l=year))
-#' ggpoint(p, list(h=rating, c=year, l=year))
+#' p <- schcl(ggplot(reshape::tips, aes = list(x = total_bill, y = 1)))
+#' ggjitter(p, list(h = tip))
+#' ggjitter(p, list(c = tip))
+#' ggjitter(p, list(l = tip))
 schcl <- function(plot, name="", to=list()) add_scale(plot, scale_hcl(name=name, to))
 scale_hcl <- function(name="", to=list()) scale_cont_colour(name=name, c("h","c","l","a"), to)
 

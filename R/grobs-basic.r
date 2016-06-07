@@ -218,14 +218,11 @@ grob_hline <- function(aesthetics, position=0, range=c(NA, NA), ...) {
 #' @inheritParams ggpoint
 #' @export
 #' @examples
-#' library(ggplot2movies)
-#' p <- ggplot(movies, aes=list(x=mpaa, y=rating))
+#' p <- ggplot(reshape::tips, aes = list(x = day, y = tip))
 #' ggjitter(p)
 #' ggjitter(ggboxplot(p))
 #' ggjitter(ggboxplot(p), xjitter=2)
 #' ggjitter(ggboxplot(p), yjitter=1)
-#' p <- ggplot(movies, aes=list(x=mpaa, y=factor(Action)))
-#' ggjitter(p)
 ggjitter <- function(plot, aesthetics=list(), ..., data=NULL) {
 	gg_add("jitter", plot, aesthetics, ..., data=data)
 }
@@ -309,6 +306,7 @@ grob_text  <- function(aesthetics, justification="centre", ...) {
 #' @inheritParams ggpoint
 #' @export
 #' @examples
+#' library(ggplot2movies)
 #' myear <- do.call(rbind, by(movies, movies$year, function(df) data.frame(
 #'   year = df$year[1],
 #'   mean.length = mean(df$length),
@@ -408,6 +406,7 @@ grob_polygon  <- function(aesthetics, ...) {
 #' @inheritParams ggpoint
 #' @export
 #' @examples
+#' library(ggplot2movies)
 #' mry <- do.call(rbind, by(movies, round(movies$rating), function(df) {
 #' 	nums <- tapply(df$length, df$year, length)
 #' 	data.frame(
@@ -460,6 +459,7 @@ grob_line  <- function(aesthetics, ...) {
 #' @inheritParams ggpoint
 #' @export
 #' @examples
+#' library(ggplot2movies)
 #' mry <- do.call(rbind, by(movies, round(movies$rating), function(df) {
 #' 	nums <- tapply(df$length, df$year, length)
 #' 	data.frame(

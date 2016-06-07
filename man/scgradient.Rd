@@ -33,11 +33,11 @@ low colour to the mid colour to high colour, as defined in the
 arguments.
 }
 \examples{
-library(ggplot2movies)
-p <- scgradient(ggplot(movies, aes=list(x=mpaa, y=rating)))
-ggjitter(p, list(colour=rating))
-ggjitter(p, list(colour=length))
-p <- ggjitter(p, list(colour=rating))
+p <- scgradient(ggplot(reshape::tips, aes = list(x = sex, y = day)))
+ggjitter(p, list(colour = total_bill))
+ggjitter(p, list(colour = tip))
+
+p <- ggjitter(p, list(colour = tip))
 scgradient(p, low="yellow")
 scgradient(p, high="green", midpoint=5)
 }

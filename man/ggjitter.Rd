@@ -43,13 +43,10 @@ Other options:
 }
 }
 \examples{
-library(ggplot2movies)
-p <- ggplot(movies, aes=list(x=mpaa, y=rating))
+p <- ggplot(reshape::tips, aes = list(x = day, y = tip))
 ggjitter(p)
 ggjitter(ggboxplot(p))
 ggjitter(ggboxplot(p), xjitter=2)
 ggjitter(ggboxplot(p), yjitter=1)
-p <- ggplot(movies, aes=list(x=mpaa, y=factor(Action)))
-ggjitter(p)
 }
 

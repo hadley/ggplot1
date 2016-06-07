@@ -40,6 +40,7 @@ Other options:
 }
 }
 \examples{
+library(ggplot2movies)
 mry <- do.call(rbind, by(movies, round(movies$rating), function(df) {
 	nums <- tapply(df$length, df$year, length)
 	data.frame(

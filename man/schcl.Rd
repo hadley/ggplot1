@@ -26,12 +26,9 @@ hue, as shown in the example.
 Note: alpha mappings only work with the Quartz and PDF devices.
 }
 \examples{
-p <- schcl(ggplot(movies, aes=list(y=rating, x=year)))
-ggpoint(p, list(h=year))
-schcl(ggpoint(p, list(h=year)), list(h.to=c(45,60)))
-ggpoint(p, list(c=rating))
-ggpoint(p, list(l=length))
-ggpoint(p, list(h=rating, l=year))
-ggpoint(p, list(h=rating, c=year, l=year))
+p <- schcl(ggplot(reshape::tips, aes = list(x = total_bill, y = 1)))
+ggjitter(p, list(h = tip))
+ggjitter(p, list(c = tip))
+ggjitter(p, list(l = tip))
 }
 

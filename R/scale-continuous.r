@@ -173,11 +173,11 @@ scale_size <- function(name="", to=c(0.8, 5)) scale_continuous(variable="size", 
 #' @param range range to scale data to
 #' @export
 #' @examples
-#' library(ggplot2movies)
-#' p <- scgradient(ggplot(movies, aes=list(x=mpaa, y=rating)))
-#' ggjitter(p, list(colour=rating))
-#' ggjitter(p, list(colour=length))
-#' p <- ggjitter(p, list(colour=rating))
+#' p <- scgradient(ggplot(reshape::tips, aes = list(x = sex, y = day)))
+#' ggjitter(p, list(colour = total_bill))
+#' ggjitter(p, list(colour = tip))
+#'
+#' p <- ggjitter(p, list(colour = tip))
 #' scgradient(p, low="yellow")
 #' scgradient(p, high="green", midpoint=5)
 scgradient <- function(plot, name="", low='red', mid='white', high="black", midpoint=0, range=c(NA,NA)) {

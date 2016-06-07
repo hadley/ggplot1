@@ -61,7 +61,7 @@ map_aesthetic.categorical <- function(scale, data, ...) {
 	if (!(input(scale) %in% names(data))) return(data.frame())
 
 	val <- data[[input(scale)]]
-	if (!is.null(scale$autobreaks)) {
+	if (is.numeric(val) && !is.null(scale$autobreaks)) {
 		breaks <- scale$autobreaks
 		val <- cut(val, breaks, labels=FALSE, include.lowest=TRUE) #- attr(breaks,"midpoint.level")
   	vals <- scale$map[val]
@@ -126,13 +126,11 @@ defaultgrob.categorical <- function(x) {
 #' @param alpha alpha value
 #' @export
 #' @examples
-#' library(ggplot2movies)
-#' p <- ggplot(movies, aes=list(x=mpaa, y=rating))
-#' ggjitter(p, list(colour=rating))
-#' ggjitter(p, list(colour=length))
-#' ggjitter(p, list(colour=chop(length)))
-#' ggjitter(p, list(colour=chop(length,3)))
-#' sccolour(ggjitter(p, list(colour=chop(length,3))), 2)
+#' p <- ggplot(reshape::tips, aes = list(x = day, y = tip))
+#' ggjitter(p)
+#' ggjitter(p, list(colour=sex))
+#' ggjitter(p, list(colour=chop(tip, 3)))
+#' sccolour(ggjitter(p, list(colour=chop(tip, 3))), l = 40)
 sccolour <- function(plot, name="", h=c(0,360), l=65, c=100, alpha=1) {
 	add_scale(plot, scale_colour(name=name, h=h, l=l, c=c, alpha=alpha))
 }

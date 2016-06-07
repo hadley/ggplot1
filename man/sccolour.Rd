@@ -37,12 +37,10 @@ aesthetics.  For finer control, you will need to set the scale
 yourself.  See the example for some ideas.
 }
 \examples{
-library(ggplot2movies)
-p <- ggplot(movies, aes=list(x=mpaa, y=rating))
-ggjitter(p, list(colour=rating))
-ggjitter(p, list(colour=length))
-ggjitter(p, list(colour=chop(length)))
-ggjitter(p, list(colour=chop(length,3)))
-sccolour(ggjitter(p, list(colour=chop(length,3))), 2)
+p <- ggplot(reshape::tips, aes = list(x = day, y = tip))
+ggjitter(p)
+ggjitter(p, list(colour=sex))
+ggjitter(p, list(colour=chop(tip, 3)))
+sccolour(ggjitter(p, list(colour=chop(tip, 3))), l = 40)
 }
 
