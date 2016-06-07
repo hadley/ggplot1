@@ -159,6 +159,14 @@ scfillbrewer <- function(plot, name="", palette=1) {
 }
 scale_fill_brewer <- function(name="", palette=1) scale_categorical("fill", name=name, palette=palette, transform=map_colour_brewer)
 
+#' @export
+#' @rdname scfillbrewer
+scbrewer <- function(plot, name="", palette=1) {
+	add_scale(plot, scale_brewer(name=name, palette=palette))
+}
+scale_brewer <- function(name="", palette=1) scale_categorical("colour", name=name, palette=palette, transform=map_colour_brewer)
+
+
 #' Scale: shape
 #'
 #' This scale is automatically added when you use the shape aesthetic
