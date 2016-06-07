@@ -11,3 +11,16 @@ You can install ggplot1 from github with:
 # install.packages("devtools")
 devtools::install_github("ggplot1/hadley")
 ```
+
+## Usage
+
+```R
+mtcars %>% 
+  ggplot(list(x = mpg, y = wt)) %>% 
+  ggpoint()
+
+mtcars %>% 
+  ggplot(list(x = mpg, y = wt)) %>% 
+  ggpoint(list(colour = gear)) %>% 
+  scbrewer()
+```
