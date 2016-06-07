@@ -131,7 +131,7 @@ build_df <- function(plot, data = plot$data, aesthetics=NULL) {
 
 	df <- cbind(df, data[,intersect(names(data), plot$conditions), drop=FALSE])
 
-	expand.grid.df(df, unique(plot$data[, setdiff(plot$conditions, names(df)), drop=FALSE]), unique=FALSE)
+	reshape::expand.grid.df(df, unique(plot$data[, setdiff(plot$conditions, names(df)), drop=FALSE]), unique=FALSE)
 }
 
 # Uneval

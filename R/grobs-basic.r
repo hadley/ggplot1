@@ -27,7 +27,7 @@ gg_add <- function(map, plot, aesthetics=list(), ..., data=NULL) {
 # @arguments user specified values
 # @keyword internal
 aesdefaults <- function(x, y, ...) {
-	defaults(x, updatelist(y, list(...)))
+	defaults(x, reshape::updatelist(y, list(...)))
 }
 
 # Grob function: point

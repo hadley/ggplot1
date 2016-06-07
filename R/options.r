@@ -61,7 +61,7 @@
 	class(opt) <- "options"
 
 	function(...) {
-		opt <<- updatelist(opt, list(...))
+		opt <<- reshape::updatelist(opt, list(...))
 		opt
 	}
 }
@@ -92,9 +92,9 @@ theme_default <- list(
 	grid.fill = "grey90",
 	legend.position = "right",
 	save = FALSE,
-	strip.gp = gpar(col = "white", fill = "grey80", lwd=3),
+	strip.gp = grid::gpar(col = "white", fill = "grey80", lwd=3),
 	strip.text = function(variable, value) paste(variable, value, sep=": "),
-	strip.text.gp = gpar()
+	strip.text.gp = grid::gpar()
 )
 ggopt <- .build_options(theme_default)
 

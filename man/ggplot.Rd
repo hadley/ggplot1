@@ -11,22 +11,24 @@ ggplot(data, ...)
   aesthetics = list(), ...)
 }
 \arguments{
-\item{formula}{describing row and column layout, see
-\code{\link[reshape]{reshape}} for more details}
+\item{data}{default data frame}
 
-\item{default}{data frame}
+\item{...}{Not used}
 
-\item{a}{vector of names giving which margins to display, can include
+\item{formula}{formula describing row and column layout, see
+\code{\link[reshape]{cast}} for more details}
+
+\item{margins}{a vector of names giving which margins to display, can include
 \code{grand_row} and \code{grand_col} or us TRUE to display all margins}
 
-\item{default}{list of aesthetic mappings (these can be colour, size, shape,
+\item{aesthetics}{default list of aesthetic mappings (these can be colour, size, shape,
 line type -- see individual grob functions for more details)}
 }
 \description{
 This function creates the basic ggplot object which you can then
 furnish with graphical objects.  Here you will set
 up the default data frame, default aesthetics and the formula that
-will determine how the panels are broken apart.  See \code{\link[reshape]{reshape}}
+will determine how the panels are broken apart.  See \code{\link[reshape]{cast}}
 for more details on specifying the facetting formula and margin arguments.
 Note that ggplot creates a plot object without a "plot": you need to
 grobs (points, lines, bars, etc.) to create something that you can see.
@@ -110,6 +112,8 @@ If you want to change the background colour, how the panel strips are displayed,
 or any other default graphical option, see \code{\link{ggopt}}.
 }
 \examples{
+data("tips", package = "reshape")
+
 p <- ggplot(tips)
 summary(p)
 ggpoint(p, aesthetic = list(y = tip, x = total_bill))
@@ -141,6 +145,6 @@ ggjitter(ggboxplot(p))
 }
 \seealso{
 \url{http://had.co.nz/ggplot}, \code{\link[reshape]{stamp}},
-  \code{\link[reshape]{reshape}}, \code{\link{ggopt}}
+  \code{\link[reshape]{cast}}, \code{\link{ggopt}}
 }
 

@@ -3,7 +3,7 @@
 #' This function creates the basic ggplot object which you can then
 #' furnish with graphical objects.  Here you will set
 #' up the default data frame, default aesthetics and the formula that
-#' will determine how the panels are broken apart.  See \code{\link[reshape]{reshape}}
+#' will determine how the panels are broken apart.  See \code{\link[reshape]{cast}}
 #' for more details on specifying the facetting formula and margin arguments.
 #' Note that ggplot creates a plot object without a "plot": you need to
 #' grobs (points, lines, bars, etc.) to create something that you can see.
@@ -85,16 +85,17 @@
 #' If you want to change the background colour, how the panel strips are displayed,
 #' or any other default graphical option, see \code{\link{ggopt}}.
 #'
-#' @param default data frame
-#' @param formula describing row and column layout, see
-#'  \code{\link[reshape]{reshape}} for more details
-#' @param a vector of names giving which margins to display, can include
-#'   \code{grand_row} and \code{grand_col} or us TRUE to display all margins
-#' @param default list of aesthetic mappings (these can be colour, size, shape,
+#' @param data default data frame
+#' @param aesthetics default list of aesthetic mappings (these can be colour, size, shape,
 #'    line type -- see individual grob functions for more details)
+#' @param ... Not used
+#' @inheritParams setfacets
 #' @seealso \url{http://had.co.nz/ggplot}, \code{\link[reshape]{stamp}},
-#'   \code{\link[reshape]{reshape}}, \code{\link{ggopt}}
+#'   \code{\link[reshape]{cast}}, \code{\link{ggopt}}
+#' @import grid
 #' @examples
+#' data("tips", package = "reshape")
+#'
 #' p <- ggplot(tips)
 #' summary(p)
 #' ggpoint(p, aesthetic = list(y = tip, x = total_bill))
@@ -166,28 +167,28 @@ print.ggplot <- function(x, newpage = is.null(vp), vp = NULL, save=ggopt()$save,
 
 # Plot modification -------------------------------------------------------
 
-# Default aesthetics
-# Modify the default aesthetics for a plot
-#
-# @arguments plot object
-# @arguments new list of aesthetics
-# @keyword hplot
-# @value modified plot object
+#' Modify the default aesthetics for a plot
+#'
+#' @param plot plot object
+#' @param aesthetics new list of aesthetics
+#' @return modified plot object
+#' @export
 defaultaesthetics <- function(plot, aesthetics) {
   plot$defaults <- defaults(uneval(substitute(aesthetics)), plot$defaults)
   (.PLOT <<- plot)
 }
 
-# Set facetting formula and margins for a plot
-# Set the function that controls how the plot is facetted into multiple panels.
-#
-# @arguments plot object, if not specified will use current plot
-# @arguments formula describing row and column layout, see \code{\link[reshape]{reshape}} for more details
-# @arguments a vector of names giving which margins to display, can include grand\_row and grand\_col or uss TRUE to display all margins
-# @keyword hplot
+#' Set facetting formula and margins for a plot
+#'
+#' @param p plot object, if not specified will use current plot
+#' @param formula formula describing row and column layout, see
+#'  \code{\link[reshape]{cast}} for more details
+#' @param margins a vector of names giving which margins to display, can include
+#'   \code{grand_row} and \code{grand_col} or us TRUE to display all margins
+#' @export
 setfacets <- function(p = .PLOT, formula = . ~ . , margins = FALSE) {
 	if (inherits(formula, "formula")) formula <- deparse(substitute(formula))
-	vars <- cast_parse_formula(formula, names(p$data))
+	vars <- reshape::cast_parse_formula(formula, names(p$data))
 
 	p$formula <- formula
 	p$margins <- margins
@@ -198,15 +199,14 @@ setfacets <- function(p = .PLOT, formula = . ~ . , margins = FALSE) {
 }
 
 
-# Set default dataset for a plot
-# Set the default data set for a plot object
-#
-# @arguments plot object, if not specified will use current plot
-# @arguments new data set
-# @keyword hplot
+#' Set the default data set for a plot object
+#'
+#' @param p plot object, if not specified will use current plot
+#' @param data new data set
+#' @export
 setdata <- function(p = .PLOT, data) {
   p$data <- data
-  vars <- cast_parse_formula(p$formula, names(p$data))
+  vars <- reshape::cast_parse_formula(p$formula, names(p$data))
 
 	p$facet <- stamp(p$data, p$formula, function(x) 0, margins=p$margins)
 	p$conditions <- as.vector(unlist(vars))

@@ -279,8 +279,8 @@ grob_smooth <- function(aesthetics, method=loess, formula=y~x, se = TRUE, ...) {
 	xseq <- seq(min(aesthetics$x, na.rm=TRUE), max(aesthetics$x, na.rm=TRUE), length=80)
 	method <- match.fun(method)
 
-	colour <- as.character(uniquedefault(aesthetics$colour, "black"))
-	size <- uniquedefault(aesthetics$size, 1)
+	colour <- as.character(reshape::uniquedefault(aesthetics$colour, "black"))
+	size <- reshape::uniquedefault(aesthetics$size, 1)
 
 	model <- method(formula, data=aesthetics, ..., weight=weight)
 	pred <- predict(model, data.frame(x=xseq), se=se)

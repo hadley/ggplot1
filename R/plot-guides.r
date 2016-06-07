@@ -66,8 +66,8 @@ labels_default <- function(plot, strip = plot$striplabel) {
 		x
 	}
 
-	row.labels <- add.names(rrownames(plot$facet))
-	col.labels <- add.names(rcolnames(plot$facet))
+	row.labels <- add.names(reshape::rrownames(plot$facet))
+	col.labels <- add.names(reshape::rcolnames(plot$facet))
 
   labels_h <- apply(col.labels, c(2,1), ggstrip, strip.gp=plot$strip.gp, text.gp=plot$strip.text.gp)
 	labels_v <- apply(row.labels, c(1,2), ggstrip, hor=FALSE, strip.gp=plot$strip.gp, text.gp=plot$strip.text.gp)

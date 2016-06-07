@@ -18,8 +18,8 @@
 # @keyword internal
 viewport_default <- function(plot, guides=guides_basic(plot), scales=scales_default(plot)) {
 	gm <- plot$facet
-	row.labels <- rrownames(gm)
-	col.labels <- rcolnames(gm)
+	row.labels <- reshape::rrownames(gm)
+	col.labels <- reshape::rcolnames(gm)
 
 	rows <- nrow(gm) + ncol(col.labels) + 1
 	cols <- ncol(gm) + ncol(row.labels) + 1
