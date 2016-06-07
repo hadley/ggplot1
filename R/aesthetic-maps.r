@@ -13,16 +13,16 @@ chop <- function(x, n=5, method="quantiles", midpoint=0, digits=2) {
 	methods <- c("quantiles","cut", "pretty")
 	method <- methods[charmatch(method, methods)]
 	if (is.na(method)) stop(paste("Method must be one of:", paste(methods, collapse=", ")))
-	
+
 	breaks <- chop.breaks(x, n, method, midpoint)
 	labels <- formatC(breaks, digits=2, width=0)
-	
+
 	fac <- ordered(cut(x, breaks, labels=FALSE, include.lowest=TRUE) - attr(breaks,"midpoint.level"),labels=paste(labels[-length(breaks)], labels[-1], sep="-"))
 	attr(fac, "breaks") <- breaks
-	
+
 	if (attr(breaks,"midpoint.level") != 0) {
 		attr(fac, "midpoint.level") <- - attr(breaks,"midpoint.level")
-		class(fac) <- c("diverging", "ordered", "factor")		
+		class(fac) <- c("diverging", "ordered", "factor")
 	}
 
 	fac
@@ -41,26 +41,26 @@ chop.breaks <- function(x, n, method, midpoint=NA) {
 		range <- diff(range(x, na.rm=TRUE))
 		range.neg <- midpoint - min(x, na.rm=TRUE)
 		range.pos <- max(x, na.rm=TRUE) - midpoint
-		
+
 		n.pos <- floor(n * range.pos / range)
 		n.neg <- ceiling(n * range.neg / range)
-		
+
 		breaks <- unique(c(
 			chop.breaks(x[x <= midpoint], n.neg, method, midpoint)[-(n.neg + 1)],
-			midpoint, 
+			midpoint,
 			chop.breaks(x[x >= midpoint], n.pos, method, midpoint)[-1]
 		))
 		attr(breaks, "midpoint.level") <- n.neg+1
-		
+
 	} else {
-		breaks <- unique(as.vector(switch(method, 
+		breaks <- unique(as.vector(switch(method,
 			pretty = pretty(x, n),
-			cut = seq(min(x, na.rm=TRUE),max(x, na.rm=TRUE), length=n+1), 
+			cut = seq(min(x, na.rm=TRUE),max(x, na.rm=TRUE), length=n+1),
 			quantiles = quantile(x, seq(0,1, length=n+1), na.rm=TRUE)
 		)))
 		attr(breaks, "midpoint.level") <- 0
 	}
-	
+
 	breaks
 }
 
@@ -72,7 +72,7 @@ chop.breaks <- function(x, n, method, midpoint=NA) {
 chop_auto <- function(x) {
 	if(is.factor(x)) return(x)
 	if (length(unique(x)) < 5) return(factor(x))
-	
+
 	warning("Continuous variable automatically converted to categorical", call.=FALSE)
 	chop(x)#, method="pretty")
 }
@@ -91,7 +91,7 @@ rescale <- function(x, to=c(0,1), from=range(x, na.rm=TRUE)) {
 		warning("Categorical variable automatically converted to continuous", call.=FALSE)
 		x <- as.numeric(x)
 	}
-	
+
 	(x-from[1])/diff(from)*diff(to) + to[1]
 
 }
@@ -120,7 +120,7 @@ map_colour_gradient <- function(x, low="red", mid="white",high="black", midpoint
 	low.rgb  <- col2rgb(low, alpha=TRUE) / 255# ashcl(low)
 	mid.rgb  <- col2rgb(mid, alpha=TRUE) / 255 #ashcl(mid)
 	high.rgb <- col2rgb(high, alpha=TRUE) / 255 #ashcl(high)
-	
+
 	colour_interp <- function(i) approxfun(c(from[1], midpoint, from[2]), c(low.rgb[i], mid.rgb[i], high.rgb[i]))
 	interp_r <- colour_interp(1)
 	interp_g <- colour_interp(2)
@@ -129,7 +129,7 @@ map_colour_gradient <- function(x, low="red", mid="white",high="black", midpoint
 
 	#labc <- convertColor(cbind(interp_l(x), interp_ax(x), interp_b(x)), "Lab", "sRGB")
 	#apply(cbind(labc, interp_a(x)), 1, function(x) do.call(rgb, as.list(x)))
-	
+
 	rgb(interp_r(x), interp_g(x), interp_b(x), interp_a(x))
 }
 
@@ -147,7 +147,7 @@ map_colour_gradient <- function(x, low="red", mid="white",high="black", midpoint
 # @keyword hplot
 # @alias map_color_hsv
 map_colour_hsv <- function(h=1, s=1, v=1, a=1, h.to=c(0,1), s.to=c(0,1), v.to=c(0,1), a.to=c(0,1), h.from=range(h, na.rm=TRUE), s.from = range(s, na.rm=TRUE), v.from = range(v, na.rm=TRUE), a.from = range(a, na.rm=TRUE)) {
-	.map_colour(list(h,s,v,a), list(h.to, s.to, v.to, a.to), list(h.from, s.from, v.from, a.from), hsv)	
+	.map_colour(list(h,s,v,a), list(h.to, s.to, v.to, a.to), list(h.from, s.from, v.from, a.from), hsv)
 }
 
 # Aesthetic mapping: hcl components of colour
@@ -166,7 +166,7 @@ map_colour_hsv <- function(h=1, s=1, v=1, a=1, h.to=c(0,1), s.to=c(0,1), v.to=c(
 # @keyword hplot
 # @alias map_color_hcl
 map_colour_hcl <- function(h=0, c=80, l=50, a=1, h.to=c(0,360), c.to=c(0,200), l.to=c(0,100), a.to=c(0,1), h.from = range(h, na.rm=TRUE), c.from = range(c, na.rm=TRUE), l.from = range(l, na.rm=TRUE), a.from = range(a, na.rm=TRUE)) {
-	.map_colour(list(h,c,l,a), list(h.to, c.to, l.to, a.to), list(h.from, c.from, l.from, a.from), hcl)	
+	.map_colour(list(h,c,l,a), list(h.to, c.to, l.to, a.to), list(h.from, c.from, l.from, a.from), hcl)
 }
 
 # Aesthetic mapping: rgb components of colour
@@ -188,14 +188,14 @@ map_colour_rgb <- function(r=0, g=0, b=0, a=1, r.to = c(0,1), g.to=c(0,1), b.to=
 
 
 # Map colour
-# Convenience function to power \code{\link{map_colour_hsv}}, 
+# Convenience function to power \code{\link{map_colour_hsv}},
 # \code{\link{map_colour_hcl}} and \code{\link{map_colour_rgb}}
 #
 # @arguments list of colour vectors
 # @arguments list of colour tos in same order as colours
 # @arguments function to produce colours in \#rrggbbaa form
 # @keyword hplot
-# @keyword internal 
+# @keyword internal
 .map_colour <- function(colours, tos, froms, colour_function) {
 	do.call(colour_function, mapply(rescale, colours, tos, froms))
 }
@@ -205,7 +205,7 @@ map_colour_rgb <- function(r=0, g=0, b=0, a=1, r.to = c(0,1), g.to=c(0,1), b.to=
 # ================================================================
 
 # Aesthetic mapping: glyph shape
-# Map values to point shapes.  
+# Map values to point shapes.
 #
 # If x is not a factor, will be converted to one by \code{\link{chop_auto}}.
 # Can display at most 6 different categories.
@@ -217,7 +217,7 @@ map_colour_rgb <- function(r=0, g=0, b=0, a=1, r.to = c(0,1), g.to=c(0,1), b.to=
 map_shape <- function(x, solid=FALSE) {
 	x <- chop_auto(x)
 	if (length(levels(x)) > 6) stop("Too many levels! 6 at most")
-	
+
 	if (solid) {
 		c(19, 17, 3, 15, 7, 8)[x]
 	} else {
@@ -236,7 +236,7 @@ map_shape <- function(x, solid=FALSE) {
 map_linetype <- function(x){
 	x <- chop_auto(x)
 	if (length(levels(x)) > 4) stop("Too many levels! 4 at most")
-	
+
 	c(1,2,3,4)[x]
 }
 
@@ -267,10 +267,10 @@ map_colour_brewer <- function(x, palette=1){
 	} else {
 		n <- length(levels(x))
 	}
-	
+
 	if (n > 9) stop("Too many levels! 9 at most")
 	if (n < 3) stop("Too few levels! 3 at least")
-	
+
 	pal <- brewer.pal(n, brewer_palettes(type)[palette])
 	pal[x]
 }
@@ -280,10 +280,10 @@ map_color_brewer <- map_colour_brewer
 map_colour <- function(x, h=c(0,360), l=60, c=90, alpha=1) {
 	x <- chop_auto(x)
 	n <- length(levels(x))
-	
+
 	pal <- grDevices::hcl(seq(h[1], h[2], length = n+1), c=c, l=l, alpha=alpha)[-(n+1)]
 	pal
-	#names(pal) <- 
+	#names(pal) <-
 	#pal[levels(x)]
 }
 
@@ -298,7 +298,7 @@ map_color <- map_colour
 #
 # @argument factor to inspect
 # @value character string giving Brewer type
-# @keyword internal 
+# @keyword internal
 brewer_type <- function(x) {
 	if (is.ordered(x)) {
 		if ("diverging" %in% class(x)) {
@@ -315,12 +315,12 @@ brewer_type <- function(x) {
 
 # Get Brewer colour palettes
 # Convenience function to retrieve private RColorBrewer palettes.
-# 
+#
 # @arguments type of palettes to retrieve
 # @keyword internal
 brewer_palettes <- function(type) {
 	switch(type, div = RColorBrewer:::divlist, qual = RColorBrewer:::quallist, seq = RColorBrewer:::seqlist)
-} 
+}
 
 
 # Alias all colour to color

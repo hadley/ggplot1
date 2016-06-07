@@ -1,11 +1,11 @@
 # Scale: manual
 # Create a manual scale
-# 
-# This scale function allows you complete control over the 
+#
+# This scale function allows you complete control over the
 # scale.
-# 
+#
 # Supply labels and breaks to produce a legend.
-# 
+#
 # @keyword hplot
 # @arguments plot object to add scale to
 # @arguments variable to scale
@@ -15,14 +15,14 @@
 # @arguments grob function to use when drawing legend
 # @seealso \code{\link{ggfluctuation}} for a use
 scmanual <- function(plot = .PLOT, variable="x", name="", breaks=NULL, labels=as.character(breaks), grob=function(x) grob_point(x, unique=FALSE)) {
-	add_scale(plot,  
-	  scale_manual(variable=variable, name=name, breaks=breaks, labels=labels, grob=grob) 
+	add_scale(plot,
+	  scale_manual(variable=variable, name=name, breaks=breaks, labels=labels, grob=grob)
 	)
 }
 
 scale_manual <- function(name="", variable="x", breaks=NULL, labels=labels, grob=function(x) grob_point(x, unique=FALSE)) {
 	structure(
-		list(variable=variable, name=name, breaks=breaks, labels=labels, grob=grob), 
+		list(variable=variable, name=name, breaks=breaks, labels=labels, grob=grob),
 		class = c("manual", "scale")
 	)
 }
@@ -37,11 +37,11 @@ labels.manual <- function(object, ...) scale$labels
 
 # Print manual details
 # Print moderately useful details of this manual scale.
-# 
+#
 # @arguments scale object
 # @arguments not used
-# @keyword manip 
-# @keyword internal 
+# @keyword manip
+# @keyword internal
 print.manual <- function(x, ...) {
 	cat(paste("manual scale: ", scale_mapping(x), "\n", sep=""))
 }

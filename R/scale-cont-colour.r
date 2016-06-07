@@ -1,16 +1,16 @@
 # Scale: colour (continuous)
 # Scale colour along a continuous path
-# 
+#
 # This scale class is the workhorse behind:
-# 
+#
 #   \item \code{\link{scrgb}}
 #   \item \code{\link{schsv}}
 #   \item \code{\link{schcl}}
-# 
+#
 # See those function for more details.
-# 
+#
 # @keyword hplot
-# @keyword internal 
+# @keyword internal
 scale_cont_colour <- function(inputs, name="", variable="colour", to=list()) {
 	type <- paste(inputs[1:3], collapse="")
 	x <- list(inputs=inputs, name=name, variable=variable, to=to, type=type, visible=TRUE)
@@ -37,17 +37,17 @@ map_aesthetic.scale_cont_colour <- function(scale, data, ...) {
 
 # Scale: colour (rgb)
 # Scale continuous variables to red, green and blue components of colour.
-# 
+#
 # The RGB colour space is NOT perceptually uniform.  Use
 # this scale with care.  It is extremely ill-advised to map variables to more
 # than one of r, g, b, or a.
-# 
+#
 # Note: alpha mappings only work with the Quartz and PDF devices.
-# 
+#
 # @arguments plot to add scale to
 # @arguments name of the scale (used in the legend)
 # @arguments named list of target ranges (r.to, g.to, b.to, a.to)
-# @keyword hplot 
+# @keyword hplot
 # @seealso \code{\link{map_colour_rgb}}, \code{\link{rgb}}
 # @alias scfillrgb
 #X p <- scrgb(ggplot(movies, aes=list(y=rating, x=year)))
@@ -66,13 +66,13 @@ scale_fill_rgb <- function(name="", to=list()) scale_cont_colour(name=name, vari
 
 # Scale: colour (hsv)
 # Scale continuous variables to hue, saturation and value components of colour.
-# 
+#
 # Use multiple mappings with care
 #
 # Note: alpha mappings only work with the Quartz and PDF devices.
-# 
+#
 # @seealso \code{\link{map_colour_hsv}}, \code{\link{hsv}}
-# @keyword hplot 
+# @keyword hplot
 # @alias scfillhsv
 #X p <- schsv(ggplot(movies, aes=list(y=rating, x=year)))
 #X ggpoint(p, list(h=year))
@@ -88,14 +88,14 @@ scale_fill_hsv <- function(name="", to=list()) scale_cont_colour(name=name, vari
 
 # Scale: colour (hcl)
 # Scale continuous variables to hue, chroma and luminance components of colour
-# 
+#
 # This colour map is the most perceptually uniform.  However, use multiple
-# mappings with care.  It is often a good idea to restrict the range of the 
+# mappings with care.  It is often a good idea to restrict the range of the
 # hue, as shown in the example.
-# 
+#
 # Note: alpha mappings only work with the Quartz and PDF devices.
-# 
-# @keyword hplot 
+#
+# @keyword hplot
 # @seealso \code{\link{map_colour_hcl}}, \code{\link{hcl}}
 # @alias scfillhcl
 #X p <- schcl(ggplot(movies, aes=list(y=rating, x=year)))

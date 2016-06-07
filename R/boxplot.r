@@ -1,14 +1,14 @@
 # Weighted box plot calculats
-# 
-# @keyword internal 
+#
+# @keyword internal
 # @alias boxplot.weighted
 # @alias boxplot_stats_weighted
 boxplot.weighted.formula <- function(formula, data = NULL, ..., weights=1, subset, na.action = NULL) {
-    if (missing(formula) || (length(formula) != 3)) 
+    if (missing(formula) || (length(formula) != 3))
         stop("'formula' missing or incorrect")
     m <- match.call(expand.dots = FALSE)
     m$weights <- NULL
-    if (is.matrix(eval(m$data, parent.frame()))) 
+    if (is.matrix(eval(m$data, parent.frame())))
         m$data <- as.data.frame(data)
     m$... <- NULL
     m$na.action <- na.action
@@ -19,34 +19,34 @@ boxplot.weighted.formula <- function(formula, data = NULL, ..., weights=1, subse
     boxplot.weighted(split(mf[[response]], mf[-response]), weights=split(weights, mf[-response]), ...)
 }
 
-boxplot.weighted <- 
-function (x, weights=1, ..., range = 1.5, width = NULL, varwidth = FALSE, 
-    notch = FALSE, outline = TRUE, names, plot = TRUE, border = par("fg"), 
-    col = NULL, log = "", pars = list(boxwex = 0.8, staplewex = 0.5, 
-        outwex = 0.5), horizontal = FALSE, add = FALSE, at = NULL) 
+boxplot.weighted <-
+function (x, weights=1, ..., range = 1.5, width = NULL, varwidth = FALSE,
+    notch = FALSE, outline = TRUE, names, plot = TRUE, border = par("fg"),
+    col = NULL, log = "", pars = list(boxwex = 0.8, staplewex = 0.5,
+        outwex = 0.5), horizontal = FALSE, add = FALSE, at = NULL)
 {
 
     args <- list(x, ...)
-    namedargs <- if (!is.null(attributes(args)$names)) 
+    namedargs <- if (!is.null(attributes(args)$names))
         attributes(args)$names != ""
     else rep(FALSE, length.out = length(args))
     pars <- c(args[namedargs], pars)
-    groups <- if (is.list(x)) 
+    groups <- if (is.list(x))
         x
     else args[!namedargs]
-    if (0 == (n <- length(groups))) 
+    if (0 == (n <- length(groups)))
         stop("invalid first argument")
-    if (length(class(groups))) 
+    if (length(class(groups)))
         groups <- unclass(groups)
-    if (!missing(names)) 
+    if (!missing(names))
         attr(groups, "names") <- names
     else {
-        if (is.null(attr(groups, "names"))) 
+        if (is.null(attr(groups, "names")))
             attr(groups, "names") <- 1:n
         names <- attr(groups, "names")
     }
     cls <- sapply(groups, function(x) class(x)[1])
-    cl <- if (all(cls == cls[1])) 
+    cl <- if (all(cls == cls[1]))
         cls[1]
     else NULL
 
@@ -65,13 +65,13 @@ function (x, weights=1, ..., range = 1.5, width = NULL, varwidth = FALSE,
         }
         ct <- ct + 1
     }
-    if (length(cl) && cl != "numeric") 
+    if (length(cl) && cl != "numeric")
         oldClass(stats) <- cl
-    z <- list(stats = stats, n = ng, conf = conf, out = out, 
+    z <- list(stats = stats, n = ng, conf = conf, out = out,
         group = group, names = names)
     if (plot) {
-        bxp(z, width, varwidth = varwidth, notch = notch, log = log, 
-            border = border, boxfill = col, pars = pars, outline = outline, 
+        bxp(z, width, varwidth = varwidth, notch = notch, log = log,
+            border = border, boxfill = col, pars = pars, outline = outline,
             horizontal = horizontal, add = add, at = at)
         invisible(z)
     }

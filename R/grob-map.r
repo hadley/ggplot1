@@ -8,7 +8,7 @@
 #
 #	order <- as.integer(def(attr(coords, "plotOrder"), 1:length(coords)))
 #	grobs <- lapply(order, function(i) grob_mappoly(coords[[i]], ...))
-#	
+#
 #	do.call(gList, grobs)
 #}
 #
@@ -19,10 +19,10 @@
 #	from <-   def(attr(coords, "pstart")$from)
 #	to <-     def(attr(coords, "pstart")$to, dim(coords)[1])
 #	order <-  def(attr(coords, "plotOrder"), 1:nParts)
-#	
+#
 #	grobPart <- function(i) {
 #		gp <- if (attr(coords, "ringDir")[i] == 1) gp else gphollow
-#		
+#
 #		coords <- coords[from[i]:to[i], ]
 #		coords <- mapthin(list(x=coords[,1], y=coords[,2]), delta)
 #		#coords <- mapproject(coords$x, coords$x, projection=projection, ...)
@@ -30,13 +30,13 @@
 #
 #		polygonGrob(coords$x, coords$y, gp=gp, default="native")
 #	}
-#	
+#
 #	gTree(children= do.call(gList, lapply(order, grobPart)))
 #}
 #
 ## Collapse polylist into a data frame that can be dealt with more easily.
 #collapse_polylist <- function(pl) {
-#	
+#
 #}
 #
 ##library(maptools)
@@ -44,7 +44,7 @@
 #thin <- function(x, p=0.05) {
 #	n <- nrow(pumap[[x]])
 #	b <- 1/p*(0:(round(n*p)-1))+1
-#	
+#
 ##	b <- sample(n, round(n*p), replace=F)
 #	pumap2[[x]] <<- (pumap[[x]])[sort(b, decreasing=T),]
 ##	pumap2[[x]][,1] <<- pumap2[[x]][,1] *xscale + xoff

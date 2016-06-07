@@ -1,10 +1,10 @@
 # ggplot method for tabular data
-# Automatically 
-# 
-# 
+# Automatically
+#
+#
 # @arguments table
 # @arguments unused
-# @keyword hplot 
+# @keyword hplot
 #X ggbar(ggplot())
 #ggplot.table <- function(data, ...) {
 #	df <- as.data.frame(x)
@@ -18,18 +18,18 @@
 
 # ggplot: Time series
 # Convenient way of plotting \code{ts} and \code{zoo} objects with ggplot
-# 
-# @arguments 
+#
+# @arguments
 #ggplot.zoo <- ggplot.ts <- function(data, formula = series ~ ., margins=FALSE, aesthetics=list(x=time, y=value, id=series), ...) {
 #	formula <- deparse(substitute(formula))
-#	
+#
 #	df <- cbind(as.data.frame(data), time = c(as.numeric(time(data))))
 #	dfm <- melt(df, id="time")
 #	dfm <- rename(dfm, c(variable = "series"))
 #	dfm$series <- factor(gsub("Series ", "", dfm$series))
-#	
+#
 #	p <- ggplot(dfm, aesthetics=list(), margins=margins, formula=formula, ...)
 #	p$defaults <- uneval(substitute(aesthetics))
 #	p
-#	
+#
 #}

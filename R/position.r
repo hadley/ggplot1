@@ -1,9 +1,9 @@
 # Position guides
 # Create x or y axis depending on variable name.
-# 
+#
 # @arguments scale
 # @arguments not currently used
-# @keyword hplot 
+# @keyword hplot
 guides.position <- function(scale, ...) {
 	#if (scale$visible == FALSE) return(NULL)
 	position <- if(output(scale) == "x") "bottom" else "left"
@@ -13,22 +13,22 @@ guides.position <- function(scale, ...) {
 
 # Map projection scale
 # Map projections
-# 
+#
 # This allows you to use map type projection.
-# 
+#
 # @arguments projection to use, see \code{\link[mapproj]{mapproject}} for possible values
 # @arguments list of parameters passed to \code{\link[mapproj]{mapproject}}
-# @keyword hplot 
+# @keyword hplot
 ps_map <- function(projection="mercator", params=NULL) {
 	if (!require("mapproj")) stop("mapproj package required for projection transforms")
 	structure(
-		list(projection = projection, params = params), 
+		list(projection = projection, params = params),
 		class = c("ps_map", "ps_double", "position","scale")
 	)
 }
 
 map_aesthetic.ps_map <- function(scale, data, ...) {
-	proj <- do.call(mapproject, 
+	proj <- do.call(mapproject,
 		list(data$x, data$y, projection=scale$projection, data$params)
 	)
 	data.frame(x=proj$x, y=proj$y)
@@ -74,14 +74,14 @@ map_aesthetic.ps_double <- function(scale, data, ...) {
 
 # Equal scales
 # Create a scale for axes with equal length on each
-# 
-# 
+#
+#
 # @keyword hplot
 ps_equal <- function() {
 	structure(
-		list(), 
+		list(),
 		class = c("ps_equal", "ps_double", "position","scale")
-	)	
+	)
 }
 
 
@@ -105,13 +105,13 @@ ps_equal <- function() {
 
 
 # Expand range
-# Convenience function for expanding a range with a multiplicative 
+# Convenience function for expanding a range with a multiplicative
 # or additive constant.
-# 
+#
 # @arguments range of data
 # @arguments multiplicative constract
 # @arguments additive constant
-# @keyword manip 
+# @keyword manip
 expand_range <- function(range, mul=0, add=0) {
 	range + c(-1, 1) * (diff(range) * mul + add)
 }

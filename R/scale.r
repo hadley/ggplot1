@@ -1,6 +1,6 @@
 # Scale methods
-# 
-# @keyword internal 
+#
+# @keyword internal
 # @alias defaultgrob.manual
 # @alias guides.manual
 # @alias labels.categorical
@@ -9,8 +9,8 @@
 # @alias labels.manual
 # @alias labels.ps_double
 # @alias labels.ps_map
-# @alias position_categorical 
-# @alias position_continuous 
+# @alias position_categorical
+# @alias position_continuous
 # @alias print.continuous
 # @alias print.gradient
 # @alias range.categorical
@@ -18,8 +18,8 @@
 # @alias range.ps_double
 # @alias scale_colour
 # @alias scale_fill
-# @alias scale_fill_brewer 
-# @alias scale_fill_hcl 
+# @alias scale_fill_brewer
+# @alias scale_fill_hcl
 # @alias scale_fill_hsv
 # @alias scale_fill_rgb
 # @alias scale_gradient
@@ -31,25 +31,25 @@
 # @alias scale_shape
 # @alias scale_size
 sc <- function() {}
- 
+
 # Guides
 # Create guides for the given scale
-# 
-# @keyword hplot 
-# @keyword internal 
+#
+# @keyword hplot
+# @keyword internal
 # @alias guides.ps_double
 # @alias guides.ps_map
 # @alias guides.scale_cont_colour
 guides <- function(scale, ...) UseMethod("guides")
 
-# Map	
+# Map
 # Map raw data to aesthetics using the provided scale
-# 
-# @keyword hplot 
+#
+# @keyword hplot
 # @alias map_aesthetic.scale
-# @keyword internal 
-# @alias map_aesthetic.categorical 
-# @alias map_aesthetic.continuous 
+# @keyword internal
+# @alias map_aesthetic.categorical
+# @alias map_aesthetic.continuous
 # @alias map_aesthetic.gradient
 # @alias map_aesthetic.ps_double
 # @alias map_aesthetic.ps_map
@@ -60,10 +60,10 @@ map_aesthetic.scale <- function(scale, data, ...) data
 
 # Input
 # Return what input variable this scale uses
-# 
-# @keyword hplot 
+#
+# @keyword hplot
 # @alias input.scale
-# @keyword internal 
+# @keyword internal
 # @alias input.ps_double
 # @alias input.ps_map
 # @alias input.scale_cont_colour
@@ -72,10 +72,10 @@ input.scale  <- function(scale) scale$variable
 
 # Output
 # Return what output variables this scale produces
-# 
-# @keyword hplot 
+#
+# @keyword hplot
 # @alias output.scale
-# @keyword internal 
+# @keyword internal
 # @alias output.ps_double
 # @alias output.ps_map
 # @alias output.scale_cont_colour
@@ -84,13 +84,13 @@ output.scale <- function(scale) scale$variable
 
 # Update
 # Update a scale with data values.
-# 
+#
 # This is used to teach each scale about the full range of the data
 # so that all panels share a common scale.
-# 
-# @keyword hplot 
+#
+# @keyword hplot
 # @alias update<-.scale
-# @keyword internal 
+# @keyword internal
 # @alias update<-.categorical
 # @alias update<-.continuous
 # @alias update<-.gradient
@@ -103,21 +103,21 @@ output.scale <- function(scale) scale$variable
 
 # Scale range
 # Default method for all scales.
-# 
+#
 # @arguments scale
 # @arguments unused
-# @keyword manip 
-# @keyword internal 
+# @keyword manip
+# @keyword internal
 range.scale <- function(x, ...) x$from
 
 
 # Deafult grob
 # Return the default grob to use for creating a legend
-# 
+#
 # @arguments scale object
 # @alias deafultgrob.scale
-# @keyword hplot 
-# @keyword internal 
+# @keyword hplot
+# @keyword internal
 # @alias defaultgrob.categorical
 # @alias defaultgrob.gradient
 # @alias defaultgrob.default
@@ -126,11 +126,11 @@ defaultgrob.default <- function(x) function(x) grob_point(x, unique=FALSE)
 
 # Scale breaks
 # Compute breaks of scale object
-# 
+#
 # @arguments scale object
 # @arguments ...
-# @keyword manip 
-# @keyword internal 
+# @keyword manip
+# @keyword internal
 # @alias breaks.categorical
 # @alias breaks.continuous
 # @alias breaks.gradient
@@ -141,37 +141,37 @@ breaks  <- function(scale, ...) UseMethod("breaks")
 
 # Print scale
 # Print a moderately useful description of a scale object
-# 
+#
 # @arguments scale object
 # @arguments unused
-# @keyword manip 
-# @keyword internal 
+# @keyword manip
+# @keyword internal
 print.scale <- function(x, ...) {
 	cat(paste("Scale: ", scale_mapping(x), "\n", sep=""))
 }
 
 # Scale mapping
 # Text string describing how the mapping of the scale works
-# 
+#
 # @arguments scale object
-# @keyword manip 
-# @keyword internal 
+# @keyword manip
+# @keyword internal
 scale_mapping <- function(x) {
 	paste(paste(input(x), collapse=", "), "->", paste(output(x), collapse=","), sep="")
 }
 
 
 # Add scale
-# Add (one) scale to the plot 
-# 
+# Add (one) scale to the plot
+#
 # You shouldn't need to call this function yourself as all
 # scale objects provide a convenient method to do so automatically.  These
 # are the functions that start with sc.
-# 
+#
 # @arguments plot object, if not specified will use current plot
 # @arguments scale to add, see \code{\link{scales}} for possible options
-# @keyword hplot 
-# @keyword internal 
+# @keyword hplot
+# @keyword internal
 #X p <- ggplot(movies, aesthetics=list(x=length, y=rating))
 #X add_scale(ggpoint(p), position_continuous('x', range=c(80,100)))
 add_scale <- function(p = .PLOT, scale) {
@@ -182,12 +182,12 @@ add_scale <- function(p = .PLOT, scale) {
 
 # Add position scales.
 # Add postiion scales to a plot
-# 
+#
 # @arguments plot object
 # @arguments precompution, see code in \code{\link{ggplot_plot}}
 # @arguments position ("x" or "y")
 # @keyword hplot
-# @keyword internal 
+# @keyword internal
 add_position <- function(plot, pre, position) {
 	if (!(position %in% unlist(input(plot$scales)))) {
 		fac <- any(unlist(lapply(pre, function(x) lapply(x, function(x) is.factor(x[[position]])))))

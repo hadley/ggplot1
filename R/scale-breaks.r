@@ -7,7 +7,7 @@
 # Best scale
 # Using \code{\link{possible_scales}} and \code{\link{scale_quality}} find
 # the best scale for a data set
-# 
+#
 # @arguments vector of data
 # @arguments multiplicative expansion factor (experimental)
 # @keyword internal
@@ -15,12 +15,12 @@ best_scale <- function(data, expand=0) {
 	scales <- possible_scales(data, expand)
 	scores <- as.data.frame(t(mapply(function(s, q) scale_quality(s, q, data), scales, .Q)))
 	scores$sum <- rowMeans(scores)
-	
+
 	scales[[which.max(scores$sum)]]
 }
 
 # Possible scales
-# For a given data set, create all possible scales from the 
+# For a given data set, create all possible scales from the
 # numbers specified in Q
 # @arguments vector of data
 # @arguments multiplicative expansion factor (experimental)
@@ -28,14 +28,14 @@ best_scale <- function(data, expand=0) {
 possible_scales <- function(data, expand=0) {
 	range <- expand_range(range(data), expand)
 	rd <- diff(range)
-	
+
 	a <- round_any(range[1], 10 ^ floor(log10(rd)), floor)
 	range <- range - a
-	
+
 	z <- floor(log10(rd / .Q))
 	sml <- round_any(range[1],  .Q*10^z, floor) + a
 	lge <- round_any(range[2],  .Q*10^z, ceiling) + a
-	
+
 	scales <- mapply(seq, sml, lge, .Q*10^z, SIMPLIFY=FALSE)
 	names(scales) <- .Q
 	scales
@@ -43,11 +43,11 @@ possible_scales <- function(data, expand=0) {
 
 # Scale quality
 # Compute the how good a scale is for a given data set
-# 
+#
 # @arguments scale values
 # @arguments unit of Q used to create scale
 # @arguments vector of data
-# @keyword internal 
+# @keyword internal
 scale_quality <- function(s, q, data) {
 	m <- 5 # desired number of ticks
 

@@ -1,8 +1,8 @@
 # Grob creation functons
-# 
+#
 # See \code{vignette("writing-grob-functions")} for more details.
-# 
-# @keyword internal 
+#
+# @keyword internal
 # @alias grob_2density
 # @alias grob_abline
 # @alias grob_area

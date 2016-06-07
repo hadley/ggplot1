@@ -1,12 +1,12 @@
 # Quick plot.
 # Quick plot is a convenient wrapper function for creating simple ggplot plot objects.
 # You can use it like you'd use the \code{\link{plot}} function.
-# 
+#
 # FIXME: describe how to get more information
 # FIXME: add more examples
-# 
+#
 # \code{qplot} provides a quick way to create simple plots.
-# 
+#
 # @arguments x values
 # @arguments y values
 # @arguments data frame to use (optional)
@@ -27,7 +27,7 @@
 # @arguments character vector or expression for y axis label
 # @arguments if specified, build on top of this ggplot, rather than creating a new one
 # @arguments other arguments passed on to the grob functions
-# @keyword hplot 
+# @keyword hplot
 #X qplot(LETTERS[1:5], 1:5, type="rect", main="Blah", xlab="Hi")
 #X qplot(LETTERS[1:5], 1:5, type=c("tile", "point"), main="Blah", xlab="Hi", ylim=c(0,10), col=1:5)
 #X qplot(wt, mpg, data=mtcars, col=cyl, shape=cyl, size=wt)
@@ -41,7 +41,7 @@ qplot <- function(x, y = NULL, data, facets = . ~ ., margins=FALSE, types = "poi
 			df <- df2 <- do.call(data.frame, compact(list(x=x, y=y, colour=colour, shape=shape, size=size, linetype=linetype, fill=fill, id=id, weight=weight)))
 		}
 	}
-	
+
 	if (missing(data)) {
 		facetvars <- all.vars(facets)
 		facetvars <- facetvars[facetvars != "."]
@@ -57,14 +57,14 @@ qplot <- function(x, y = NULL, data, facets = . ~ ., margins=FALSE, types = "poi
 	}
 
 
-	
+
 	if (is.null(add)) {
-		p <- ggplot(df, formula=deparse(substitute(facets)), margins=margins)	
+		p <- ggplot(df, formula=deparse(substitute(facets)), margins=margins)
 		p$defaults <- defaults
 	} else {
 		p <- add
 	}
-	
+
 	if (!is.null(main)) p$title <- main
 	if (!is.null(xlab)) p$xlabel <- xlab
 	if (!is.null(ylab)) p$ylabel <- ylab
@@ -78,13 +78,13 @@ qplot <- function(x, y = NULL, data, facets = . ~ ., margins=FALSE, types = "poi
 			p$grobs[[length(p$grobs)]]$aesthetics <- defaults
 		}
 	}
-	
+
 	logv <- function(var) var %in% strsplit(log, "")[[1]]
 	transf <- function(var) if (logv(var)) trans_log10 else trans_none
-	
+
 
 	if (logv("x") || !missing(xlim)) p <- pscontinuous(p, "x", range=xlim, trans=transf("x"))
 	if (logv("y") || !missing(ylim)) p <- pscontinuous(p, "y", range=ylim, trans=transf("y"))
-	
+
 	p
 }

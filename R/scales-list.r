@@ -1,13 +1,13 @@
 # Scaleslist object
 # Create a list of scales objects
-# 
-# The scales output maintains a list of scale objects.  
-# 
+#
+# The scales output maintains a list of scale objects.
+#
 #  \item input and output variables
 #  \item maps a data frames using those scales
 #  \item generates ready to use scales
-# 
-# @keyword hplot 
+#
+# @keyword hplot
 # @arguments scales objects
 # @alias input.scales
 # @alias output.scales
@@ -27,12 +27,12 @@ guides.scales <- function(scale, ...) {
 }
 
 # Add new scale
-# Add new scale to list.  
-# 
+# Add new scale to list.
+#
 # Will overwrite any existing scales that use the same
 # output variables.
-# 
-# @keyword hplot 
+#
+# @keyword hplot
 # @keyword internal
 "add<-" <- function(x, value) {
 	replaced <- output(x) %in% output(value)
@@ -41,15 +41,15 @@ guides.scales <- function(scale, ...) {
 
 # Update scales.
 # This function updates an entire set of scales with data.
-# 
+#
 # Update needs to be able to deal with the multiple possible
 # data formats it could recieve:
-# 
+#
 #  * a single data frame (representing one panel from one grob function)
 #  * a matrix of data frames (all panels from a grob function)
 #  * a list of matrix of data frames (all panels from all grob functions)
-# 
-# @keyword hplot 
+#
+# @keyword hplot
 # @arguments scales object
 # @arguments data
 # @keyword internal
@@ -69,8 +69,8 @@ guides.scales <- function(scale, ...) {
 # Map scales.
 # Applies scales to data to return a data frame
 # of aesthetic values, ready to be realised by the grob functions
-# 
-# @keyword hplot 
+#
+# @keyword hplot
 # @arguments scale
 # @arguments data
 # @arguments other arguments (unused)
@@ -81,16 +81,16 @@ map_aesthetic.scales <- function(scale, data, ...) {
 
 	results <- lapply(scale, map_aesthetic, data=data)
 	absent <- sapply(results, function(x) nrow(x) == 0 )
-	
+
 	data.frame(defaults(as.data.frame(results[!absent]), data))
 }
 
 # Map all
 # Map all grobs with scale
-# 
+#
 # @arguments scale to map with
 # @arguments matrix of grobs
-# @keyword hplot 
+# @keyword hplot
 # @keyword internal
 map_all <- function(scale, matrix) {
 
@@ -102,31 +102,31 @@ map_all <- function(scale, matrix) {
 	} else {
 		map_aesthetic(scale, matrix)
 	}
-	
+
 }
 
 # Position apply
 # Apply a function to x and y position scales.
-# 
+#
 # This is a convience method because position scales can
 # be made up of two separate scales, or one scale that provides
 # both x and y position mappings.
-# 
+#
 # @arguments scales
 # @arguments function to apply
 # @arguments other arguments to pass to f
-# @keyword hplot 
+# @keyword hplot
 # @keyword internal
 position_apply <- function(scales, f, ...) {
 	find_output <- function(outputs) sapply(scales, function(x) all(outputs %in% output(x), na.rm=TRUE))
 	xyscale <- find_output(c("x","y"))
-	
+
 	if (any(xyscale)) {
 		return(f(scales[xyscale][[1]]))
 	}
-	
+
 	xscale <- find_output("x")
 	yscale <- find_output("y")
-	
+
 	list(x = f(scales[xscale][[1]]), y=f(scales[yscale][[1]]))
 }

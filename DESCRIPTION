@@ -13,5 +13,6 @@ Author: Hadley Wickham <h.wickham@gmail.com>
 Maintainer: Hadley Wickham <h.wickham@gmail.com>
 Suggests: mapproj, quantreg, MASS
 Depends: R (>= 2.3), grid, reshape (>= 0.7.4), RColorBrewer
+Imports: plyr
 LazyData: yes
 License: GPL

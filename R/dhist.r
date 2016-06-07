@@ -19,8 +19,8 @@ dhist <- function(x, a=5*diff(quantile(x, c(0.25,0.75))), nbins=10, rx = range(x
 		ylower <- yupper - a/n
 
 		cmtx <- cbind(
-			cut(yupper, breaks = ybr), 
-			cut(yupper, breaks = ybr, left.include = T), 
+			cut(yupper, breaks = ybr),
+			cut(yupper, breaks = ybr, left.include = T),
 			cut(ylower, breaks = ybr),
 			cut(ylower, breaks = ybr, left.include = T)
 		)
@@ -34,12 +34,12 @@ dhist <- function(x, a=5*diff(quantile(x, c(0.25,0.75))), nbins=10, rx = range(x
 
 		# to allow for zero counts
 		if(length(straddlers) > 0) {
-			counts <- table(c(1:nbins, cmtx[- straddlers, 1])) 
+			counts <- table(c(1:nbins, cmtx[- straddlers, 1]))
 		} else {
 			counts <- table(c(1:nbins, cmtx[, 1]))
 		}
 		counts <- counts - 1
-		
+
 		if(length(straddlers) > 0) {
 			for(i in straddlers) {
 				binno <- cmtx[i, 1]
@@ -53,10 +53,10 @@ dhist <- function(x, a=5*diff(quantile(x, c(0.25,0.75))), nbins=10, rx = range(x
 	} else {
 		bin.size <- length(x)/nbins
 		cut.pt <- c(
-			min(x) - abs(min(x))/1000, 
+			min(x) - abs(min(x))/1000,
 			approx(seq(length(x)),
-			x, 
-			(1:(nbins - 1)) * bin.size, rule = 2)$y, 
+			x,
+			(1:(nbins - 1)) * bin.size, rule = 2)$y,
 			max(x)
 		)
 		aa <- hist(x, breaks = cut.pt, plot = F, probability = T)
