@@ -4,7 +4,7 @@
 \alias{sclinetype}
 \title{Scale: line type}
 \usage{
-sclinetype(plot = .PLOT, name = "")
+sclinetype(plot, name = "")
 }
 \arguments{
 \item{plot}{ggplot object}

@@ -4,7 +4,7 @@
 \alias{ggpoint}
 \title{Grob function: point}
 \usage{
-ggpoint(plot = .PLOT, aesthetics = list(), ..., data = NULL)
+ggpoint(plot, aesthetics = list(), ..., data = NULL)
 }
 \arguments{
 \item{plot}{the plot object to modify}

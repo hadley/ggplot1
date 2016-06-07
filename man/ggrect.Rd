@@ -4,7 +4,7 @@
 \alias{ggrect}
 \title{Grob function: rectangle}
 \usage{
-ggrect(plot = .PLOT, aesthetics = list(), ..., data = NULL)
+ggrect(plot, aesthetics = list(), ..., data = NULL)
 }
 \arguments{
 \item{plot}{the plot object to modify}

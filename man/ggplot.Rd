@@ -139,6 +139,7 @@ p \%>\%
 p \%>\%
   ggpoint() \%>\%
  ggabline(slope = c(0.1,0.15,0.2))
+
 (p2 <- ggabline(ggpoint(p, aes = list(colour = tip/total_bill)), slope = c(0.1, 0.15, 0.2)))
 summary(p2)
 scgradient(p2)

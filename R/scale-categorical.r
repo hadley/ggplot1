@@ -23,7 +23,7 @@
 #' p <- ggpoint(ggplot(mtcars, aesthetics=list(x=cyl, y=mpg)))
 #' pscategorical(p, "x") # no change, because already categorical
 #' pscategorical(p, "y") # chops into discrete segments
-pscategorical <- function(plot = .PLOT, variable="x", name="", expand=c(0.01, 0.6)) {
+pscategorical <- function(plot, variable="x", name="", expand=c(0.01, 0.6)) {
 	add_scale(plot,  position_categorical(variable=variable, name=name, expand=expand) )
 }
 position_categorical <- function(variable="x", name="", expand=c(0, 0.5)) {
@@ -132,7 +132,7 @@ defaultgrob.categorical <- function(x) {
 #' ggjitter(p, list(colour=chop(length)))
 #' ggjitter(p, list(colour=chop(length,3)))
 #' sccolour(ggjitter(p, list(colour=chop(length,3))), 2)
-sccolour <- function(plot = .PLOT, name="", h=c(0,360), l=65, c=100, alpha=1) {
+sccolour <- function(plot, name="", h=c(0,360), l=65, c=100, alpha=1) {
 	add_scale(plot, scale_colour(name=name, h=h, l=l, c=c, alpha=alpha))
 }
 #' @rdname sccolour
@@ -142,7 +142,7 @@ scale_colour <- function(name="", h=c(0, 360), l=65, c=100, alpha=1) scale_categ
 
 #' @rdname sccolour
 #' @export
-scfill <- function(plot = .PLOT, name="", h=c(0,360), l=75, c=100, alpha=1) {
+scfill <- function(plot, name="", h=c(0,360), l=75, c=100, alpha=1) {
 	add_scale(plot, scale_fill(name=name, h=h, l=l, c=c, alpha=alpha))
 }
 scale_fill <- function(name="", h=c(0,360), l=75, c=100, alpha=1) scale_categorical("fill", name=name, h=h, l=l, c=c, transform=map_colour, alpha=alpha)
@@ -155,7 +155,7 @@ scale_fill <- function(name="", h=c(0,360), l=75, c=100, alpha=1) scale_categori
 #'   \code{\link[RColorBrewer]{brewer.pal}} for details. Note that palette type
 #'   is chosen automatically.
 #' @export
-scfillbrewer <- function(plot = .PLOT, name="", palette=1) {
+scfillbrewer <- function(plot, name="", palette=1) {
 	add_scale(plot, scale_fill_brewer(name=name, palette=palette))
 }
 scale_fill_brewer <- function(name="", palette=1) scale_categorical("fill", name=name, palette=palette, transform=map_colour_brewer)
@@ -173,7 +173,7 @@ scale_fill_brewer <- function(name="", palette=1) scale_categorical("fill", name
 #' p <- ggplot(mtcars, aes=list(x=mpg, y=wt, shape=cyl))
 #' ggpoint(p)
 #' ggpoint(scshape(p, FALSE))
-scshape <- function(plot = .PLOT, name="", solid=TRUE) {
+scshape <- function(plot, name="", solid=TRUE) {
 	add_scale(plot, scale_shape(name=name, solid))
 }
 scale_shape <- function(name="", solid=TRUE) scale_categorical("shape", name=name, solid=solid, transform=map_shape)
@@ -191,7 +191,7 @@ scale_shape <- function(name="", solid=TRUE) scale_categorical("shape", name=nam
 #' p <- ggplot(mtcars, aes=list(x=mpg, y=wt, linetype=cyl))
 #' ggline(p)
 #' ggline(sclinetype(p))
-sclinetype <- function(plot = .PLOT, name="") {
+sclinetype <- function(plot, name="") {
 	add_scale(plot, scale_linetype(name=name))
 }
 scale_linetype <- function(name="") scale_categorical("linetype", name=name, transform=map_linetype)

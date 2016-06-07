@@ -7,14 +7,11 @@
 \title{Scale: categorical colour
 Create a scale for categorical colours.}
 \usage{
-sccolour(plot = .PLOT, name = "", h = c(0, 360), l = 65, c = 100,
-  alpha = 1)
+sccolour(plot, name = "", h = c(0, 360), l = 65, c = 100, alpha = 1)
 
-sccolor(plot = .PLOT, name = "", h = c(0, 360), l = 65, c = 100,
-  alpha = 1)
+sccolor(plot, name = "", h = c(0, 360), l = 65, c = 100, alpha = 1)
 
-scfill(plot = .PLOT, name = "", h = c(0, 360), l = 75, c = 100,
-  alpha = 1)
+scfill(plot, name = "", h = c(0, 360), l = 75, c = 100, alpha = 1)
 }
 \arguments{
 \item{plot}{ggplot object}

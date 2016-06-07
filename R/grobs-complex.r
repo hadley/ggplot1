@@ -46,7 +46,7 @@
 #X qplot(rating, data=movies, type="histogram")
 #X qplot(rating, weight=votes, data=movies, type="histogram")
 #X qplot(rating, weight=votes, data=movies, type=c("histogram", "density"))
-gghistogram <- function(plot = .PLOT, aesthetics=list(), scale="prob", ..., data=NULL) {
+gghistogram <- function(plot, aesthetics=list(), scale="prob", ..., data=NULL) {
 	plot <- pscontinuous(plot, "y", range=c(0,NA), expand=c(0.05,0))
 	plot <- pscontinuous(plot, "x", expand=c(0.15, 0))
 
@@ -115,7 +115,7 @@ grob_histogram <- function(...) grob_bar(..., justification=c("right", "top"))
 #X m <- ggplot(movies, aesthetics=list(y=length, x=rating))
 #X ggquantile(m)
 #X }
-ggquantile <- function(plot = .PLOT, aesthetics=list(), ..., data=NULL) {
+ggquantile <- function(plot, aesthetics=list(), ..., data=NULL) {
 	gg_add("quantile", plot, aesthetics, ..., data=data)
 }
 grob_quantile <- function(aesthetics, quantiles=c(0.05, 0.25, 0.5, 0.75, 0.95), formula=y ~ splines::ns(x, 5), ...) {
@@ -172,7 +172,7 @@ grob_quantile <- function(aesthetics, quantiles=c(0.05, 0.25, 0.5, 0.75, 0.95), 
 #X ggboxplot(p, fill="pink", colour="green")
 #X ggpoint(ggboxplot(p))
 #X ggboxplot(p)
-ggboxplot <- function(plot = .PLOT, aesthetics=list(), ..., data=NULL) {
+ggboxplot <- function(plot, aesthetics=list(), ..., data=NULL) {
 	gg_add("boxplot", plot, aesthetics, ..., data=data)
 }
 grob_boxplot <- function(aesthetics, breaks=length(unique(aesthetics$x)), orientation, ...) {
@@ -271,7 +271,7 @@ grob_boxplot <- function(aesthetics, breaks=length(unique(aesthetics$x)), orient
 #X ggsmooth(p, method=lm)
 #X ggsmooth(p, method=lm, formula = y~splines::ns(x,3))
 #X ggsmooth(p, method=MASS::rlm, formula = y~splines::ns(x,3))
-ggsmooth <- function(plot = .PLOT, aesthetics=list(), ..., data=NULL) {
+ggsmooth <- function(plot, aesthetics=list(), ..., data=NULL) {
 	gg_add("smooth", plot, aesthetics, ..., data=data)
 }
 grob_smooth <- function(aesthetics, method=stats::loess, formula=y~x, se = TRUE, ...) {
@@ -334,7 +334,7 @@ grob_smooth <- function(aesthetics, method=stats::loess, formula=y~x, se = TRUE,
 #X ggcontour(p, colour="red")
 #X ggcontour(p, nlevels=3)
 #X ggcontour(ggtile(p, list(fill=z)))
-ggcontour <- function(plot = .PLOT, aesthetics=list(), ..., data=NULL) {
+ggcontour <- function(plot, aesthetics=list(), ..., data=NULL) {
 	gg_add("contour", plot, aesthetics, ..., data=data)
 }
 grob_contour <- function(aesthetics, nlevels=10, levels, ...) {
@@ -401,7 +401,7 @@ grob_contour <- function(aesthetics, nlevels=10, levels, ...) {
 #X ggdensity(m)
 #X ggdensity(m, scale="freq")
 #X ggdensity(m, colour="darkgreen", size=5)
-ggdensity <- function(plot = .PLOT, aesthetics=list(), ..., data=NULL) {
+ggdensity <- function(plot, aesthetics=list(), ..., data=NULL) {
 	plot$ylabel <- "Density"
 	plot <- pscontinuous(plot, "y", range=c(0,NA), expand=c(0.05,0))
 	gg_add("density", plot, aesthetics, ..., data=data)
@@ -458,7 +458,7 @@ grob_density <- function(aesthetics, ...) {
 #X ggcontour(m, list(z=z), data=densdf)
 #X gg2density(m)
 #X # they don't look the same due to scaling effects on kde2d
-gg2density <- function(plot = .PLOT, aesthetics=list(), ..., data=NULL) {
+gg2density <- function(plot, aesthetics=list(), ..., data=NULL) {
 	gg_add("2density", plot, aesthetics, ..., data=data)
 }
 
@@ -514,7 +514,7 @@ grob_2density <- function(aesthetics, ...) {
 #X gggroup(p, grob="histogram", aes=list(fill=cyl))
 #X gggroup(ggpoint(p), grob="smooth", se=FALSE, span=1)
 #X gggroup(ggpoint(p), aes=list(id=cyl, size=cyl), grob="smooth", span=1)
-gggroup <- function(plot = .PLOT, aesthetics=list(), ..., data=NULL) {
+gggroup <- function(plot, aesthetics=list(), ..., data=NULL) {
 	gg_add("group", plot, aesthetics, ..., data=data)
 }
 pre_group <- function(data, grob="point", ...) {

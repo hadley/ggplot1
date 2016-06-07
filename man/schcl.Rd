@@ -6,9 +6,9 @@
 \title{Scale: colour (hcl)
 Scale continuous variables to hue, chroma and luminance components of colour}
 \usage{
-schcl(plot = .PLOT, name = "", to = list())
+schcl(plot, name = "", to = list())
 
-scfillhcl(plot = .PLOT, name = "", to = list())
+scfillhcl(plot, name = "", to = list())
 }
 \arguments{
 \item{plot}{plot}

@@ -7,7 +7,7 @@
 # @alias labels.time
 # @alias range.time
 # @alias time_scale
-pstime <- function(plot = .PLOT, variable="x", name="", transform=trans_none, range=c(NA,NA), expand=c(0.05, 0), by="weeks") {
+pstime <- function(plot, variable="x", name="", transform=trans_none, range=c(NA,NA), expand=c(0.05, 0), by="weeks") {
 	add_scale(plot,  position_time(variable=variable, name=name, expand=expand, transform=transform, range=range, by=by) )
 }
 

@@ -4,7 +4,7 @@
 \alias{ggarea}
 \title{Grob function: area}
 \usage{
-ggarea(plot = .PLOT, aesthetics = list(), ..., data = NULL)
+ggarea(plot, aesthetics = list(), ..., data = NULL)
 }
 \arguments{
 \item{plot}{the plot object to modify}

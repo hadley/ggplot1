@@ -4,7 +4,7 @@
 \alias{ggpath}
 \title{Grob function: path}
 \usage{
-ggpath(plot = .PLOT, aesthetics = list(), ..., data = NULL)
+ggpath(plot, aesthetics = list(), ..., data = NULL)
 }
 \arguments{
 \item{plot}{the plot object to modify}

@@ -4,7 +4,7 @@
 \alias{ggtile}
 \title{Grob function: tile}
 \usage{
-ggtile(plot = .PLOT, aesthetics = list(), ..., data = NULL)
+ggtile(plot, aesthetics = list(), ..., data = NULL)
 }
 \arguments{
 \item{plot}{the plot object to modify}

@@ -48,7 +48,7 @@
 #X qplot(x,y,df2,types=list("bar","line","point","errorbar"), aes=list(fill=g,plus=bar,barcolour=g))
 #X qplot(x,y,df2,types=list("jitter","errorbar"), aes=list(plus=bar))
 #X qplot(x,y,df,types=list("point","line","errorbar"), aes=list(plus=bar,id=g), width=0.1)
-ggerrorbar <- function(plot = .PLOT, aesthetics = list(), ..., data = NULL) {
+ggerrorbar <- function(plot, aesthetics = list(), ..., data = NULL) {
    plot <- pscontinuous(plot, "y", range = c(0, NA), expand = c(0.05, 0))
    gg_add("errorbar", plot, aesthetics, ..., data = data)
 }

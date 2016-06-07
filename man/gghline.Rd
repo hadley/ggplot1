@@ -4,7 +4,7 @@
 \alias{gghline}
 \title{Grob function: hline}
 \usage{
-gghline(plot = .PLOT, aesthetics = list(), ..., data = NULL)
+gghline(plot, aesthetics = list(), ..., data = NULL)
 }
 \arguments{
 \item{plot}{the plot object to modify}

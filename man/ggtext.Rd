@@ -4,7 +4,7 @@
 \alias{ggtext}
 \title{Grob function: text}
 \usage{
-ggtext(plot = .PLOT, aesthetics = list(), ..., data = NULL)
+ggtext(plot, aesthetics = list(), ..., data = NULL)
 }
 \arguments{
 \item{plot}{the plot object to modify}

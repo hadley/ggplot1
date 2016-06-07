@@ -6,9 +6,9 @@
 \title{Scale: colour (rgb)
 Scale continuous variables to red, green and blue components of colour.}
 \usage{
-scrgb(plot = .PLOT, name = "", to = list())
+scrgb(plot, name = "", to = list())
 
-scfillrgb(plot = .PLOT, name = "", to = list())
+scfillrgb(plot, name = "", to = list())
 }
 \arguments{
 \item{plot}{plot}

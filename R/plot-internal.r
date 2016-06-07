@@ -4,11 +4,11 @@
 # You shouldn't need to call this function yourself.  If you want to add a
 # scale to a plot, use \code{\link{add_scale}}.
 #
-# @arguments plot object, if not specified will use current plot
+# @arguments plot object
 # @arguments list of unevaluated aesthetics
 # @keyword hplot
 # @keyword internal
-add_defaults <- function(p = .PLOT, aesthetics) {
+add_defaults <- function(p, aesthetics) {
 	new_aesthetics <- setdiff(names(aesthetics), input(p$scales))
 
 	values <- aesthetics[new_aesthetics]
@@ -39,7 +39,7 @@ add_defaults <- function(p = .PLOT, aesthetics) {
 # @arguments arguments passed down to mapping object specifying (eg.) aesthetics to use
 # @keyword hplot
 # @keyword internal
-plot_add <- function(plot=.PLOT, data=NULL, map="point", aesthetics=list(), ...) {
+plot_add <- function(plot, data=NULL, map="point", aesthetics=list(), ...) {
 	dots <- match.call(expand.dots=FALSE)$"..."
 	aesthetics <- uneval(substitute(aesthetics, parent.frame()))
 
@@ -55,7 +55,7 @@ plot_add <- function(plot=.PLOT, data=NULL, map="point", aesthetics=list(), ...)
 # @keyword internal
 plot_add_grobs <- function(plot, grob_matrix) {
 	plot$grobs <- c(plot$grobs, list(grob_matrix))
-	(.PLOT <<- plot)
+	plot
 }
 
 # Ggplot plot

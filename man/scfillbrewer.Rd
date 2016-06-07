@@ -5,7 +5,7 @@
 \title{Scale: Brewer colours
 Use Brewer colour scheme for colour fill.}
 \usage{
-scfillbrewer(plot = .PLOT, name = "", palette = 1)
+scfillbrewer(plot, name = "", palette = 1)
 }
 \arguments{
 \item{plot}{ggplot object}

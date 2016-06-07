@@ -4,7 +4,7 @@
 \alias{ggbar}
 \title{Grob function: bars}
 \usage{
-ggbar(plot = .PLOT, aesthetics = list(), ..., data = NULL)
+ggbar(plot, aesthetics = list(), ..., data = NULL)
 }
 \arguments{
 \item{plot}{the plot object to modify}

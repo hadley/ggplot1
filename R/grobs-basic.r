@@ -50,7 +50,7 @@ aesdefaults <- function(x, y, ...) {
 #' ggpoint(p, list(x=cyl, colour=cyl))
 #' p <- ggplot(mtcars)
 #' ggpoint(p, aesthetics=list(x=wt, y=mpg))
-ggpoint <- function(plot = .PLOT, aesthetics=list(), ..., data=NULL) {
+ggpoint <- function(plot, aesthetics=list(), ..., data=NULL) {
 	gg_add("point", plot, aesthetics, ..., data=data)
 }
 grob_point <- function(aesthetics, unique=TRUE, ...) {
@@ -94,7 +94,7 @@ grob_point <- function(aesthetics, unique=TRUE, ...) {
 #' ggabline(ggpoint(p), intercept=30, slope=-5)
 #' ggabline(ggpoint(p), intercept=c(30,40,50), slope=-5)
 #' ggsmooth(ggpoint(p), method=lm, formula=y~x)
-ggabline <- function(plot = .PLOT, aesthetics=list(), ..., data=NULL) {
+ggabline <- function(plot, aesthetics=list(), ..., data=NULL) {
 	gg_add("abline", plot, aesthetics, ..., data=data)
 }
 grob_abline <- function(aesthetics, intercept=0, slope=1, range=c(NA, NA), ...) {
@@ -134,7 +134,7 @@ grob_abline <- function(aesthetics, intercept=0, slope=1, range=c(NA, NA), ...) 
 #' @examples
 #' p <- ggplot(mtcars, aesthetics=list(x = wt, y=mpg))
 #' ggvline(ggpoint(p), position=mean(mtcars$wt), size=2)
-ggvline <- function(plot = .PLOT, aesthetics=list(), ..., data=NULL) {
+ggvline <- function(plot, aesthetics=list(), ..., data=NULL) {
 	gg_add("vline", plot, aesthetics, ..., data=data)
 }
 grob_vline <- function(aesthetics, position=0, range=c(NA, NA), ...) {
@@ -172,7 +172,7 @@ grob_vline <- function(aesthetics, position=0, range=c(NA, NA), ...) {
 #' @examples
 #' p <- ggplot(mtcars, aesthetics=list(x = wt, y=mpg))
 #' gghline(ggpoint(p), position=mean(mtcars$mpg), size=2)
-gghline <- function(plot = .PLOT, aesthetics=list(), ..., data=NULL) {
+gghline <- function(plot, aesthetics=list(), ..., data=NULL) {
 	gg_add("hline", plot, aesthetics, ..., data=data)
 }
 grob_hline <- function(aesthetics, position=0, range=c(NA, NA), ...) {
@@ -225,7 +225,7 @@ grob_hline <- function(aesthetics, position=0, range=c(NA, NA), ...) {
 #' ggjitter(ggboxplot(p), yjitter=1)
 #' p <- ggplot(movies, aes=list(x=mpaa, y=factor(Action)))
 #' ggjitter(p)
-ggjitter <- function(plot = .PLOT, aesthetics=list(), ..., data=NULL) {
+ggjitter <- function(plot, aesthetics=list(), ..., data=NULL) {
 	gg_add("jitter", plot, aesthetics, ..., data=data)
 }
 grob_jitter <- function(aesthetics, xjitter, yjitter, ...) {
@@ -271,7 +271,7 @@ grob_jitter <- function(aesthetics, xjitter, yjitter, ...) {
 #' ggtext(p, list(size=wt))
 #' scsize(ggtext(p, list(size=wt)), c(0.5, 1.5))
 #' ggtext(p, list(colour=cyl))
-ggtext <- function(plot = .PLOT, aesthetics=list(), ..., data=NULL) {
+ggtext <- function(plot, aesthetics=list(), ..., data=NULL) {
 	gg_add("text", plot, aesthetics, ..., data=data)
 }
 grob_text  <- function(aesthetics, justification="centre", ...) {
@@ -323,7 +323,7 @@ grob_text  <- function(aesthetics, justification="centre", ...) {
 #' ggpath(p)
 #' ggpath(p, list(id=cyl))
 #' ggpath(p, list(id=cyl, linetype=cyl))
-ggpath <- function(plot = .PLOT, aesthetics=list(), ..., data=NULL) {
+ggpath <- function(plot, aesthetics=list(), ..., data=NULL) {
 	gg_add("path", plot, aesthetics, ..., data=data)
 }
 grob_path  <- function(aesthetics, ...) {
@@ -371,7 +371,7 @@ grob_path  <- function(aesthetics, ...) {
 #'
 #' @inheritParams ggpoint
 #' @export
-ggpolygon <- function(plot = .PLOT, aesthetics=list(), ..., data=NULL) {
+ggpolygon <- function(plot, aesthetics=list(), ..., data=NULL) {
 	gg_add("polygon", plot, aesthetics, ..., data=data)
 }
 grob_polygon  <- function(aesthetics, ...) {
@@ -418,7 +418,7 @@ grob_polygon  <- function(aesthetics, ...) {
 #' ggline(p)
 #' ggpath(p, list(size=rating))
 #' ggpath(p, list(colour=rating))
-ggline <- function(plot = .PLOT, aesthetics=list(), ..., data=NULL) {
+ggline <- function(plot, aesthetics=list(), ..., data=NULL) {
 	gg_add("line", plot, aesthetics, ..., data=data)
 }
 grob_line  <- function(aesthetics, ...) {
@@ -477,7 +477,7 @@ grob_line  <- function(aesthetics, ...) {
 #'   ggribbon(p, aes=list(upper=number+5, lower=number-5, fill=rating), colour=NA),
 #'   midpoint=5, low="red", high="darkgreen"
 #' )
-ggribbon <- function(plot = .PLOT, aesthetics=list(), ..., data=NULL) {
+ggribbon <- function(plot, aesthetics=list(), ..., data=NULL) {
 	gg_add("ribbon", plot, aesthetics, ..., data=data)
 }
 pre_ribbon <- function(data, ...) {
@@ -540,7 +540,7 @@ grob_ribbon <- function(aesthetics, ...) {
 #' qplot(year, level, data=huron, type=c("area", "line"))
 #' ggarea(p, fill=alpha("grey80", 0.5))
 #' pscontinuous(ggarea(p), "y", range=c(0,NA))
-ggarea <- function(plot = .PLOT, aesthetics=list(), ..., data=NULL) {
+ggarea <- function(plot, aesthetics=list(), ..., data=NULL) {
 	gg_add("area", plot, aesthetics, ..., data=data)
 }
 grob_area  <- function(aesthetics, ...) {
@@ -587,7 +587,7 @@ grob_area  <- function(aesthetics, ...) {
 #' @inheritParams ggpoint
 #' @export
 #' @seealso \code{\link{ggbar}}, \code{\link{ggtile}}
-ggrect <- function(plot = .PLOT, aesthetics=list(), ..., data=NULL) {
+ggrect <- function(plot, aesthetics=list(), ..., data=NULL) {
 	gg_add("rect", plot, aesthetics, ..., data=data)
 }
 grob_rect   <- function(aesthetics, justification = c("centre","top"), ...) {
@@ -638,7 +638,7 @@ grob_rect   <- function(aesthetics, justification = c("centre","top"), ...) {
 #' ggbar(p, avoid="dodge", sort=TRUE)
 #' ggbar(p, aes=list(fill=mpg), avoid="dodge", sort=TRUE)
 #' ggbar(p, avoid="stack", sort=TRUE)
-ggbar <- function(plot = .PLOT, aesthetics=list(), ..., data=NULL) {
+ggbar <- function(plot, aesthetics=list(), ..., data=NULL) {
 	plot <- pscontinuous(plot, "y", range=c(NA,NA), expand=c(0.05,0))
 	gg_add("bar", plot, aesthetics, ..., data=data)
 }
@@ -731,7 +731,7 @@ position_adjust <- function(aesthetics, avoid, direction, adjust=1) {
 #' ggtile(ggplot(pp(100, r=2), aes=list(x=x,y=y,fill=z)))
 #' p <- ggplot(pp(20)[sample(20*20, size=200),], aes=list(x=x,y=y,fill=z))
 #' ggtile(p)
-ggtile <- function(plot = .PLOT, aesthetics=list(), ..., data=NULL) {
+ggtile <- function(plot, aesthetics=list(), ..., data=NULL) {
 	gg_add("tile", plot, aesthetics, ..., data=data)
 }
 grob_tile  <- function(aesthetics, ...) {

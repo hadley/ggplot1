@@ -46,7 +46,7 @@ scale_continuous <- function(variable="x", name="", transform=trans_none, range=
 #' pscontinuous(p, "x", transform=trans_sqrt)
 #' pscontinuous(p, "x", transform=trans_log10)
 #' pscontinuous(p, "x", transform=trans_log10, breaks=seq(10,30, 5))
-pscontinuous <- function(plot = .PLOT, variable="x", name="", transform=trans_none, range=c(NA,NA), expand=c(0.05, 0), breaks=NULL) {
+pscontinuous <- function(plot, variable="x", name="", transform=trans_none, range=c(NA,NA), expand=c(0.05, 0), breaks=NULL) {
 	sc <- position_continuous(variable=variable, name=name, expand=expand, transform=transform, range=range, breaks=breaks)
 	add_scale(plot, sc)
 }
@@ -152,7 +152,7 @@ print.continuous <- function(x, ...) {
 #' ggpoint(p, list(size=wt))
 #' scsize(ggpoint(p, list(size=wt)), c(1,10))
 #' scsize(ggpoint(p, list(size=sqrt(wt))), c(1,5))
-scsize <- function(plot = .PLOT, name="", to=c(0.8, 5)) {
+scsize <- function(plot, name="", to=c(0.8, 5)) {
 	add_scale(plot, scale_size(name=name, to))
 }
 scale_size <- function(name="", to=c(0.8, 5)) scale_continuous(variable="size", name=name, to=to, transform=trans_sqrt)
@@ -179,12 +179,12 @@ scale_size <- function(name="", to=c(0.8, 5)) scale_continuous(variable="size", 
 #' p <- ggjitter(p, list(colour=rating))
 #' scgradient(p, low="yellow")
 #' scgradient(p, high="green", midpoint=5)
-scgradient <- function(plot = .PLOT, name="", low='red', mid='white', high="black", midpoint=0, range=c(NA,NA)) {
+scgradient <- function(plot, name="", low='red', mid='white', high="black", midpoint=0, range=c(NA,NA)) {
 	add_scale(plot, scale_gradient(name=name, low, mid, high, midpoint))
 }
 #' @export
 #' @rdname scgradient
-scfillgradient <- function(plot = .PLOT, name="", low='red', mid='white', high="black", midpoint=0, range=c(NA,NA)) {
+scfillgradient <- function(plot, name="", low='red', mid='white', high="black", midpoint=0, range=c(NA,NA)) {
 	add_scale(plot, scale_gradient(name=name, low, mid, high, midpoint, variable="fill"))
 }
 scale_gradient <- function(name="", low="red", mid="white", high="black", midpoint=0, range=c(NA,NA), variable="colour") {

@@ -4,7 +4,7 @@
 \alias{ggpolygon}
 \title{Grob function: polygon}
 \usage{
-ggpolygon(plot = .PLOT, aesthetics = list(), ..., data = NULL)
+ggpolygon(plot, aesthetics = list(), ..., data = NULL)
 }
 \arguments{
 \item{plot}{the plot object to modify}

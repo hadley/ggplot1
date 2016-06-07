@@ -5,7 +5,7 @@
 \title{Scale: size
 Linearly map size to a variable.}
 \usage{
-scsize(plot = .PLOT, name = "", to = c(0.8, 5))
+scsize(plot, name = "", to = c(0.8, 5))
 }
 \arguments{
 \item{plot}{plot}

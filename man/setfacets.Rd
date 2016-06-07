@@ -4,10 +4,10 @@
 \alias{setfacets}
 \title{Set facetting formula and margins for a plot}
 \usage{
-setfacets(p = .PLOT, formula = . ~ ., margins = FALSE)
+setfacets(p, formula = . ~ ., margins = FALSE)
 }
 \arguments{
-\item{p}{plot object, if not specified will use current plot}
+\item{p}{plot object}
 
 \item{formula}{formula describing row and column layout, see
 \code{\link[reshape]{cast}} for more details}

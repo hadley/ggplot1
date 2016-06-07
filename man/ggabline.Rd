@@ -4,7 +4,7 @@
 \alias{ggabline}
 \title{Grob function: abline}
 \usage{
-ggabline(plot = .PLOT, aesthetics = list(), ..., data = NULL)
+ggabline(plot, aesthetics = list(), ..., data = NULL)
 }
 \arguments{
 \item{plot}{the plot object to modify}

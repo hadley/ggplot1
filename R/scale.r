@@ -172,16 +172,16 @@ scale_mapping <- function(x) {
 # scale objects provide a convenient method to do so automatically.  These
 # are the functions that start with sc.
 #
-# @arguments plot object, if not specified will use current plot
+# @arguments plot object
 # @arguments scale to add, see \code{\link{scales}} for possible options
 # @keyword hplot
 # @keyword internal
 #X p <- ggplot(movies, aesthetics=list(x=length, y=rating))
 #X add_scale(ggpoint(p), position_continuous('x', range=c(80,100)))
-add_scale <- function(p = .PLOT, scale) {
+add_scale <- function(p, scale) {
 	replaced <- output(p$scales) %in% output(scale)
 	p$scales <- do.call(scales, c(p$scales[!replaced, drop=FALSE], list(scale)))
-	(.PLOT <<- p)
+	p
 }
 
 # Add position scales.

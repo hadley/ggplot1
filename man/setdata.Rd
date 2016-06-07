@@ -4,10 +4,10 @@
 \alias{setdata}
 \title{Set the default data set for a plot object}
 \usage{
-setdata(p = .PLOT, data)
+setdata(p, data)
 }
 \arguments{
-\item{p}{plot object, if not specified will use current plot}
+\item{p}{plot object}
 
 \item{data}{new data set}
 }

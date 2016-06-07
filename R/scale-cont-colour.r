@@ -47,13 +47,13 @@ map_aesthetic.scale_cont_colour <- function(scale, data, ...) {
 #' scrgb(ggpoint(p, list(b=rating, r=1)), list(b.to=c(0.25,0.75)))
 #' ggpoint(p, list(b=rating, r=year))
 #' ggpoint(p, list(b=rating, r=year, g=year))
-scrgb <- function(plot = .PLOT, name="", to=list()) add_scale(plot, scale_rgb(name=name, to))
+scrgb <- function(plot, name="", to=list()) add_scale(plot, scale_rgb(name=name, to))
 
 scale_rgb <- function(name="", to=list()) scale_cont_colour(name=name, c("r","g","b","a"), to)
 
 #' @export
 #' @rdname scrgb
-scfillrgb <- function(plot = .PLOT, name="", to=list()) add_scale(plot, scale_fill_rgb(name=name, to))
+scfillrgb <- function(plot, name="", to=list()) add_scale(plot, scale_fill_rgb(name=name, to))
 
 scale_fill_rgb <- function(name="", to=list()) scale_cont_colour(name=name, variable="fill", c("r","g","b","a"), to)
 
@@ -78,10 +78,10 @@ scale_fill_rgb <- function(name="", to=list()) scale_cont_colour(name=name, vari
 #' ggpoint(p, list(l=length))
 #' ggpoint(p, list(h=rating, l=year))
 #' ggpoint(p, list(h=rating, c=year, l=year))
-schcl <- function(plot = .PLOT, name="", to=list()) add_scale(plot, scale_hcl(name=name, to))
+schcl <- function(plot, name="", to=list()) add_scale(plot, scale_hcl(name=name, to))
 scale_hcl <- function(name="", to=list()) scale_cont_colour(name=name, c("h","c","l","a"), to)
 
 #' @export
 #' @rdname schcl
-scfillhcl <- function(plot = .PLOT, name="", to=list()) add_scale(plot, scale_fill_hcl(name=name, to))
+scfillhcl <- function(plot, name="", to=list()) add_scale(plot, scale_fill_hcl(name=name, to))
 scale_fill_hcl <- function(name="", to=list()) scale_cont_colour(name=name, variable="fill", c("h","c","l","a"), to)

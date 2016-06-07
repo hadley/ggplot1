@@ -4,7 +4,7 @@
 \alias{scshape}
 \title{Scale: shape}
 \usage{
-scshape(plot = .PLOT, name = "", solid = TRUE)
+scshape(plot, name = "", solid = TRUE)
 }
 \arguments{
 \item{plot}{ggplot object}

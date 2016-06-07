@@ -4,7 +4,7 @@
 \alias{ggribbon}
 \title{Grob function: ribbon}
 \usage{
-ggribbon(plot = .PLOT, aesthetics = list(), ..., data = NULL)
+ggribbon(plot, aesthetics = list(), ..., data = NULL)
 }
 \arguments{
 \item{plot}{the plot object to modify}

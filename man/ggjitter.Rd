@@ -4,7 +4,7 @@
 \alias{ggjitter}
 \title{Grob function: jittered points}
 \usage{
-ggjitter(plot = .PLOT, aesthetics = list(), ..., data = NULL)
+ggjitter(plot, aesthetics = list(), ..., data = NULL)
 }
 \arguments{
 \item{plot}{the plot object to modify}

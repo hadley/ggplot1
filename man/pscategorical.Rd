@@ -4,8 +4,7 @@
 \alias{pscategorical}
 \title{Add a categorical position scale to the plot}
 \usage{
-pscategorical(plot = .PLOT, variable = "x", name = "", expand = c(0.01,
-  0.6))
+pscategorical(plot, variable = "x", name = "", expand = c(0.01, 0.6))
 }
 \arguments{
 \item{plot}{ggplot object}

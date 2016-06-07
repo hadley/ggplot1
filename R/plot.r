@@ -154,8 +154,7 @@ ggplot.default <- function(data = NULL, formula = . ~ ., margins=FALSE, aestheti
 	p$ylabel <- if (!is.null(p$defaults$y)) deparse(p$defaults$y) else ""
 
 	if (inherits(formula, "formula")) formula <- deparse(substitute(formula))
-	p <- setfacets(p, formula, margins)
-	(.PLOT <<- p)
+	setfacets(p, formula, margins)
 }
 
 
@@ -171,7 +170,6 @@ print.ggplot <- function(x, newpage = is.null(vp), vp = NULL, save=ggopt()$save,
 	}
 }
 
-
 # Plot modification -------------------------------------------------------
 
 #' Modify the default aesthetics for a plot
@@ -182,18 +180,18 @@ print.ggplot <- function(x, newpage = is.null(vp), vp = NULL, save=ggopt()$save,
 #' @export
 defaultaesthetics <- function(plot, aesthetics) {
   plot$defaults <- defaults(uneval(substitute(aesthetics)), plot$defaults)
-  (.PLOT <<- plot)
+  plot
 }
 
 #' Set facetting formula and margins for a plot
 #'
-#' @param p plot object, if not specified will use current plot
+#' @param p plot object
 #' @param formula formula describing row and column layout, see
 #'  \code{\link[reshape]{cast}} for more details
 #' @param margins a vector of names giving which margins to display, can include
 #'   \code{grand_row} and \code{grand_col} or us TRUE to display all margins
 #' @export
-setfacets <- function(p = .PLOT, formula = . ~ . , margins = FALSE) {
+setfacets <- function(p, formula = . ~ . , margins = FALSE) {
 	if (inherits(formula, "formula")) formula <- deparse(substitute(formula))
 	vars <- reshape::cast_parse_formula(formula, names(p$data))
 
@@ -202,21 +200,21 @@ setfacets <- function(p = .PLOT, formula = . ~ . , margins = FALSE) {
 	p$facet <- stamp(p$data, p$formula, function(x) 0, margins=p$margins)
 	p$conditions <- as.vector(unlist(vars))
 
-	(.PLOT <<- p)
+	p
 }
 
 
 #' Set the default data set for a plot object
 #'
-#' @param p plot object, if not specified will use current plot
+#' @param p plot object
 #' @param data new data set
 #' @export
-setdata <- function(p = .PLOT, data) {
+setdata <- function(p, data) {
   p$data <- data
   vars <- reshape::cast_parse_formula(p$formula, names(p$data))
 
 	p$facet <- stamp(p$data, p$formula, function(x) 0, margins=p$margins)
 	p$conditions <- as.vector(unlist(vars))
 
-	(.PLOT <<- p)
+	p
 }

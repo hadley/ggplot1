@@ -4,7 +4,7 @@
 \alias{ggvline}
 \title{Grob function: vline}
 \usage{
-ggvline(plot = .PLOT, aesthetics = list(), ..., data = NULL)
+ggvline(plot, aesthetics = list(), ..., data = NULL)
 }
 \arguments{
 \item{plot}{the plot object to modify}
