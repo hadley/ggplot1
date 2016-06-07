@@ -35,7 +35,7 @@ panels_default <- function(plot, grobs) {
 	nr <- dim(grobs[[1]])[1]
 	nc <- dim(grobs[[1]])[2]
 
-	border <- gTree(children=gList(rectGrob(gp=gpar(col=ggopt()$grid.col, lwd=3, fill=NA), name="border"))) # , names="facets"
+	border <- gTree(children=gList(rectGrob(gp=gpar(col=ggopt()$grid.colour, lwd=3, fill=NA), name="border"))) # , names="facets"
 	borders <- matrix(rep(list(border), prod(dim(grobs[[1]]))), ncol = dim(grobs[[1]])[2])
 	pg <- expand.grid(1:nr, 1:nc)
 	borders <- matrix(mapply(function(x,y) {
