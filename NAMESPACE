@@ -3,6 +3,7 @@
 S3method(ggplot,default)
 S3method(print,ggplot)
 export(defaultaesthetics)
+export(ggplot)
 export(setdata)
 export(setfacets)
 import(grid)

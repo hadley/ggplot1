@@ -92,6 +92,7 @@
 #' @seealso \url{http://had.co.nz/ggplot}, \code{\link[reshape]{stamp}},
 #'   \code{\link[reshape]{cast}}, \code{\link{ggopt}}
 #' @import grid
+#' @export
 #' @examples
 #' data("tips", package = "reshape")
 #'
