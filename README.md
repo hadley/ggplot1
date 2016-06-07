@@ -1,4 +1,5 @@
 # ggplot1
+[![Travis-CI Build Status](https://travis-ci.org/hadley/ggplot1.svg?branch=master)](https://travis-ci.org/hadley/ggplot1)
 
 ggplot1 is update of ggplot, the package that preceded ggplot2. ggplot1 is mostly made available out of historical interest, to illustrate how my thinking about API design in R has evolved over the years.
 
