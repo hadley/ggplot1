@@ -1,13 +1,8 @@
 Package: ggplot1
 Version: 0.0.1.9000
-Title: An implementation of the Grammar of Graphics in R
-Description: An implementation of the grammar of graphics in R. It combines
-    the advantages of both base and lattice graphics: conditioning and shared
-    axes are handled automatically, and you can still build up a plot step by
-    step from multiple data sources. It also implements a more sophisticated
-    multidimensional conditioning system and a consistent interface to map data
-    to aesthetic attributes. See \url{http://had.co.nz/ggplot/} for more
-    information, documentation and examples.
+Title: Before there was ggplot2
+Description: This is the original ggplot package brought back to life mostly
+    for historial interest.
 Author: Hadley Wickham <h.wickham@gmail.com>
 Maintainer: Hadley Wickham <h.wickham@gmail.com>
 Suggests:
@@ -24,3 +19,5 @@ Imports:
 LazyData: yes
 License: GPL
 RoxygenNote: 5.0.1
+URL: https://github.com/hadley/ggplot1
+BugReports: https://github.com/hadley/ggplot1/issues
