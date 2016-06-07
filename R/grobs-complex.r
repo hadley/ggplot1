@@ -120,11 +120,11 @@ ggquantile <- function(plot = .PLOT, aesthetics=list(), ..., data=NULL) {
 }
 grob_quantile <- function(aesthetics, quantiles=c(0.05, 0.25, 0.5, 0.75, 0.95), formula=y ~ splines::ns(x, 5), ...) {
 	aesthetics <- aesdefaults(aesthetics, list(weight=rep(1, length(aesthetics$y))), ...)
-	if (!require(quantreg, quietly=TRUE)) stop("You need to install the quantreg package!")
+	if (!requireNamespace(quantreg, quietly=TRUE)) stop("You need to install the quantreg package!")
 
 	xseq <- seq(min(aesthetics$x, na.rm=TRUE), max(aesthetics$x, na.rm=TRUE), length=30)
 
-	model <- rq(formula, data=aesthetics, tau=quantiles, weight=weight) #
+	model <- quantreg::rq(formula, data=aesthetics, tau=quantiles, weight=weight) #
 	yhats <- predict(model, data.frame(x=xseq))
 	qs <- data.frame(y = as.vector(yhats), x = xseq, id = rep(quantiles, each=length(xseq)))
 	qs$size <- (0.5 - abs(0.5 - qs$id))*5 + 0.5

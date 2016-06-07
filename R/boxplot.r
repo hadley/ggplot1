@@ -83,8 +83,8 @@ boxplot_stats_weighted <- function (x, coef = 1.5, weights=1, do.conf = TRUE, do
 	nna <- !is.na(x)
 
 	if (length(unique(weights)) != 1) {
-		if (!require(quantreg, quietly=TRUE)) stop("You need to install the quantreg package for weighted boxplots!")
-		stats <- as.numeric(coef(rq(x ~ 1, weight = weights, tau=c(0, 0.25, 0.5, 0.75, 1))))
+		if (!requireNamespace(quantreg, quietly=TRUE)) stop("You need to install the quantreg package for weighted boxplots!")
+		stats <- as.numeric(coef(quantreg::rq(x ~ 1, weight = weights, tau=c(0, 0.25, 0.5, 0.75, 1))))
 		n <- sum(weights[nna])
 	} else {
 		stats <- as.numeric(quantile(x, c(0, 0.25, 0.5, 0.75, 1)))

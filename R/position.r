@@ -20,7 +20,7 @@ guides.position <- function(scale, ...) {
 # @arguments list of parameters passed to \code{\link[mapproj]{mapproject}}
 # @keyword hplot
 ps_map <- function(projection="mercator", params=NULL) {
-	if (!require("mapproj")) stop("mapproj package required for projection transforms")
+	if (!requireNamespace("mapproj")) stop("mapproj package required for projection transforms")
 	structure(
 		list(projection = projection, params = params),
 		class = c("ps_map", "ps_double", "position","scale")
@@ -28,14 +28,14 @@ ps_map <- function(projection="mercator", params=NULL) {
 }
 
 map_aesthetic.ps_map <- function(scale, data, ...) {
-	proj <- do.call(mapproject,
+	proj <- do.call(mapproj::mapproject,
 		list(data$x, data$y, projection=scale$projection, data$params)
 	)
 	data.frame(x=proj$x, y=proj$y)
 }
 
 "update<-.ps_map" <- function(x, value) {
-	proj <- do.call(mapproject, list(value$x, value$y, projection=x$projection, x$params))
+	proj <- do.call(mapproj::mapproject, list(value$x, value$y, projection=x$projection, x$params))
 	x$range <- list(x=range(proj$x, na.rm=TRUE), y=range(proj$y, na.rm=TRUE))
 	x
 }
