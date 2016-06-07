@@ -173,6 +173,7 @@ scale_size <- function(name="", to=c(0.8, 5)) scale_continuous(variable="size", 
 #' @param range range to scale data to
 #' @export
 #' @examples
+#' library(ggplot2movies)
 #' p <- scgradient(ggplot(movies, aes=list(x=mpaa, y=rating)))
 #' ggjitter(p, list(colour=rating))
 #' ggjitter(p, list(colour=length))

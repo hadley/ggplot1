@@ -26,6 +26,7 @@ than one of r, g, b, or a.
 Note: alpha mappings only work with the Quartz and PDF devices.
 }
 \examples{
+library(ggplot2movies)
 p <- scrgb(ggplot(movies, aes=list(y=rating, x=year)))
 ggpoint(p, list(r=year))
 ggpoint(p, list(b=rating))

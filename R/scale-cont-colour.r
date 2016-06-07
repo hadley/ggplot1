@@ -40,6 +40,7 @@ map_aesthetic.scale_cont_colour <- function(scale, data, ...) {
 #' @param to named list of target ranges (r.to, g.to, b.to, a.to)
 #' @export
 #' @examples
+#' library(ggplot2movies)
 #' p <- scrgb(ggplot(movies, aes=list(y=rating, x=year)))
 #' ggpoint(p, list(r=year))
 #' ggpoint(p, list(b=rating))

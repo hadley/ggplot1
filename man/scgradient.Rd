@@ -33,6 +33,7 @@ low colour to the mid colour to high colour, as defined in the
 arguments.
 }
 \examples{
+library(ggplot2movies)
 p <- scgradient(ggplot(movies, aes=list(x=mpaa, y=rating)))
 ggjitter(p, list(colour=rating))
 ggjitter(p, list(colour=length))

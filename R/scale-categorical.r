@@ -126,6 +126,7 @@ defaultgrob.categorical <- function(x) {
 #' @param alpha alpha value
 #' @export
 #' @examples
+#' library(ggplot2movies)
 #' p <- ggplot(movies, aes=list(x=mpaa, y=rating))
 #' ggjitter(p, list(colour=rating))
 #' ggjitter(p, list(colour=length))

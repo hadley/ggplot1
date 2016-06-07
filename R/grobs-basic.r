@@ -218,6 +218,7 @@ grob_hline <- function(aesthetics, position=0, range=c(NA, NA), ...) {
 #' @inheritParams ggpoint
 #' @export
 #' @examples
+#' library(ggplot2movies)
 #' p <- ggplot(movies, aes=list(x=mpaa, y=rating))
 #' ggjitter(p)
 #' ggjitter(ggboxplot(p))

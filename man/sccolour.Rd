@@ -37,6 +37,7 @@ aesthetics.  For finer control, you will need to set the scale
 yourself.  See the example for some ideas.
 }
 \examples{
+library(ggplot2movies)
 p <- ggplot(movies, aes=list(x=mpaa, y=rating))
 ggjitter(p, list(colour=rating))
 ggjitter(p, list(colour=length))

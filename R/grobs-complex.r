@@ -34,6 +34,7 @@
 # @arguments other options, see details for more information
 # @arguments data source, if not specified the plot default will be used
 # @keyword hplot
+#X library(ggplot2movies)
 #X m <- ggplot(movies, aesthetics=list(x=rating))
 #X gghistogram(m)
 #X gghistogram(m, breaks=100)
@@ -112,6 +113,7 @@ grob_histogram <- function(...) grob_bar(..., justification=c("right", "top"))
 # @keyword hplot
 # @seealso \code{\link[quantreg]{rq}} for the code used to fit the quantile regression
 #X \dontrun{
+#X library(ggplot2movies)
 #X m <- ggplot(movies, aesthetics=list(y=length, x=rating))
 #X ggquantile(m)
 #X }
@@ -394,6 +396,7 @@ grob_contour <- function(aesthetics, nlevels=10, levels, ...) {
 # @arguments data source, if not specified the plot default will be used
 # @keyword hplot
 # @seealso \code{\link{gghistogram}}, \code{\link{density}}
+#X library(ggplot2movies)
 #X m <- ggplot(movies, aesthetics=list(x=rating))
 #X ggdensity(m)
 #X qplot(length, data=movies, type="density")

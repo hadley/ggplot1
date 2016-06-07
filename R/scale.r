@@ -176,6 +176,7 @@ scale_mapping <- function(x) {
 # @arguments scale to add, see \code{\link{scales}} for possible options
 # @keyword hplot
 # @keyword internal
+#X library(ggplot2movies)
 #X p <- ggplot(movies, aesthetics=list(x=length, y=rating))
 #X add_scale(ggpoint(p), position_continuous('x', range=c(80,100)))
 add_scale <- function(p, scale) {

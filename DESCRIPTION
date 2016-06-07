@@ -10,6 +10,7 @@ Imports:
     grid,
     plyr,
     MASS,
+    ggplot2movies,
     reshape (>= 0.7.4),
     RColorBrewer,
     magrittr

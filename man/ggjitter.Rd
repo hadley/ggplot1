@@ -43,6 +43,7 @@ Other options:
 }
 }
 \examples{
+library(ggplot2movies)
 p <- ggplot(movies, aes=list(x=mpaa, y=rating))
 ggjitter(p)
 ggjitter(ggboxplot(p))
