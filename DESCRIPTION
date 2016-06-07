@@ -5,6 +5,7 @@ Description: This is the original ggplot package brought back to life mostly
     for historial interest.
 Author: Hadley Wickham <h.wickham@gmail.com>
 Maintainer: Hadley Wickham <h.wickham@gmail.com>
+Depends: R (>= 2.10)
 Imports:
     grid,
     plyr,
