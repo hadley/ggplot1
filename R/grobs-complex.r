@@ -297,6 +297,10 @@ grob_smooth <- function(aesthetics, method=stats::loess, formula=y~x, se = TRUE,
 	}
 }
 
+# Models generally use NSE to evaluate name of weight variable in context of
+# data
+globalVariables("weight")
+
 # Grob function: contours
 # Create a grob to display contours of a 3D data set.
 #
