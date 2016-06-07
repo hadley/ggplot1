@@ -1,0 +1,63 @@
+setwd("~/documents/lattice/ggplot/r")
+#options(error=recover)
+
+library(reshape)
+source("~/documents/reshape/reshape/r/stamp.r")
+data(french_fries)
+ff_m <- melt(french_fries, 1:4)
+
+source("aesthetic-maps.r")
+source("grobs.r")
+source("grobs-supplemental.r")
+source("scales.r")
+
+source("plot.r")
+source("plot-guides.r")
+source("plot-viewport.r")
+source("plot-panels.r")
+
+
+p <- plot_new(french_fries, subject ~ treatment, TRUE, y=painty, x=time)
+
+p2 <- plot_add(p)
+plot_add(p2, y=5*painty, .colour=I("red"))
+plot_add(p2, map="path")
+plot_add(p2, map="path", .colour=treatment, .size=time)
+
+plot_add(p2, map="line")
+plot_add(p2, map="bar")
+plot_add(p2, y=grassy, .colour=I("red"))
+plot_add(p2, cast(ff_m, subject + treatment + time ~ variable, mean), map="path")
+plot_add(p2, y = predict(lm(painty ~ as.numeric(time) * subject, french_fries), french_fries), map="line", id=subject)
+plot_add(p2, y = predict(lm(painty ~ as.numeric(time) * treatment, french_fries), french_fries), map="line", id=treatment)
+
+t <- plot_new(cast(ff_m, subject + treatment + time ~ . , length), . ~ time, y=treatment, x=subject)
+plot_add(t)
+plot_add(t, y=value)
+plot_add(t, map="tile")
+plot_add(t, map="tile", .colour=ordered(value))
+
+c <- plot_new(CO2, . ~ Treatment, x=conc, y=uptake, .colour=I(c("red","blue")[Type]))
+c2 <-plot_add(c)
+plot_add(c2, map="line", id=Type, y=predict(lm(uptake ~ conc * Type * Treatment)), .shape=Treatment)
+plot_add(c2, map="line", id=Type, y=predict(lm(uptake ~ poly(conc,2) * Type * Treatment)))
+plot_add(c2, map="line", id=Type, y=predict(loess(uptake ~ conc * Type * Treatment)))
+
+plot_new(CO2, . ~ Treatment, x=conc, y=uptake, .size=Type)
+plot_add()
+plot_add(map="line", id=Type, y=predict(lm(uptake ~ conc * Type * Treatment)))
+
+
+plot_new(CO2, Type ~ Treatment, x=conc, y=uptake)
+plot_add()
+plot_add(map="line", id=Typr, y=predict(lm(uptake ~ poly(conc,2) * Type * Treatment)))
+
+
+plot_new(CO2, . ~ Type , x=conc, y=Treatment, map="point")
+
+p <- plot_new(french_fries, . ~ treatment, TRUE, y=painty, x=time)
+p2 <- plot_add(p)
+plot_add_model(p2, formula=y ~ as.numeric(x))
+
+plot_add(p2,y=predict(lm(painty ~ as.numeric(time)* treatment, data=french_fries),  french_fries), map="line", id=subject)
+plot_add(p2,y=predict(lm(painty ~ as.numeric(time)* treatment * subject, data=french_fries),  french_fries), map="line", id=subject)

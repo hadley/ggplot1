@@ -1,0 +1,21 @@
+s1 <- scales(scale_size(), scale_linear("x"), scale_linear("y"), scale_colour_gradient())  
+s2 <- scales(position_map()) # scale_colour_rgb(), 
+
+df1 <- data.frame(x=1:10, y=21:30, size=1:10, a= factor(1:10))
+
+update(s1) <- df1
+update(s2) <- df2
+
+map(s1, df1)
+map(s2, df1)
+
+range(s1)
+range(s2)
+
+guides(s1)
+guides(s2)
+
+
+update(s1) <- df2
+map(s1, df2)
+

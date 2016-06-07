@@ -1,0 +1,29 @@
+df <- data.frame(x=1:20, y=rpois(20,20), z= factor(1:20))
+
+sn <- position_numeric("x")
+update(sn) <- df
+map(sn, df)
+range(sn)
+breaks(sn)
+labels(sn)
+
+sf <- position_factor("z")
+update(sf) <- df
+map(sf, df)
+range(sf)
+breaks(sf)
+labels(sf)
+
+st <- position_transform("x")
+update(st) <- df
+map(st, df)
+range(st)
+breaks(st)
+labels(st)
+
+sm <- position_map()
+update(sm) <- df
+map(sm, df)
+range(sm)
+breaks(sm)
+labels(sm)

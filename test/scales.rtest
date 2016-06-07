@@ -1,0 +1,11 @@
+source("scales.r")
+source("grobs-supplemental.r")
+
+a <- scale_new(1:10)
+b <- scale_new(factor(LETTERS[1:5]))
+
+scale_breaks(a)
+scale_labels(a)
+scale_combine(a, scale_new(-1:10))
+scale_breaks(b)
+
