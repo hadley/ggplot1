@@ -4,7 +4,6 @@
 # This scale class is the workhorse behind:
 #
 #   \item \code{\link{scrgb}}
-#   \item \code{\link{schsv}}
 #   \item \code{\link{schcl}}
 #
 # See those function for more details.
@@ -63,28 +62,6 @@ scale_rgb <- function(name="", to=list()) scale_cont_colour(name=name, c("r","g"
 scfillrgb <- function(plot = .PLOT, name="", to=list()) add_scale(plot, scale_fill_rgb(name=name, to))
 scale_fill_rgb <- function(name="", to=list()) scale_cont_colour(name=name, variable="fill", c("r","g","b","a"), to)
 
-
-# Scale: colour (hsv)
-# Scale continuous variables to hue, saturation and value components of colour.
-#
-# Use multiple mappings with care
-#
-# Note: alpha mappings only work with the Quartz and PDF devices.
-#
-# @seealso \code{\link{map_colour_hsv}}, \code{\link{hsv}}
-# @keyword hplot
-# @alias scfillhsv
-#X p <- schsv(ggplot(movies, aes=list(y=rating, x=year)))
-#X ggpoint(p, list(h=year))
-#X schsv(ggpoint(p, list(h=year)), list(h.to=c(0.3,0.5)))
-#X ggpoint(p, list(s=rating))
-#X ggpoint(p, list(v=rating, h=0.3, s=rating))
-#X ggpoint(p, list(h=rating, v=year))
-schsv <- function(plot = .PLOT, name="", to=list()) add_scale(plot, scale_hsv(name=name, to))
-scale_hsv <- function(name="", to=list()) scale_cont_colour(name=name, c("h","s","v","a"), to)
-
-scfillhsv <- function(plot = .PLOT, name="", to=list()) add_scale(plot, scale_fill_hsv(name=name, to))
-scale_fill_hsv <- function(name="", to=list()) scale_cont_colour(name=name, variable="fill", c("h","s","v","a"), to)
 
 # Scale: colour (hcl)
 # Scale continuous variables to hue, chroma and luminance components of colour

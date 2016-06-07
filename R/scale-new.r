@@ -126,7 +126,6 @@ scale_new <- function(input, output=names(input), name = paste(input, collapse="
 #X scale_new(c(size="3 * height"), "size", range=c(0, 5), class="size")
 #X scale_new(c(x="weight", y="height"), c("x", "y"), class=c("equal", "position"))
 #X scale_new(c(group="age"), c("colour", "glyph"), class="group")
-#X scale_new(c(h="age"), c("colour"), class="hsv", range=list(l=c(4,4), h=c(30,40)))
 #X scale_new(c())
 scale_apply_combine_map <- function(scale, rdmatrix) {
 	domains <- c()

@@ -11,7 +11,7 @@
 # @arguments dpi to use for raster graphics
 # @arguments other arguments passed to device function
 # @keyword file
-ggsave <- function(plot = .PLOT, filename=default_name(plot), device=default_device(filename), scale=1, width=par("din")[1], height=par("din")[2], grid="normal", dpi=96, ...) {
+ggsave <- function(plot = .PLOT, filename=default_name(plot), device=default_device(filename), scale=1, width=graphics::par("din")[1], height=graphics::par("din")[2], grid="normal", dpi=96, ...) {
 
 	pdf <- function(..., version="1.4") grDevices::pdf(..., version=version)
 	png <- function(..., width, height) grDevices::png(..., width=width*dpi, height=height*dpi)
@@ -37,7 +37,7 @@ ggsave <- function(plot = .PLOT, filename=default_name(plot), device=default_dev
 	}
 
 	device(file=filename, width=width, height=height, ...)
+	on.exit(grDevices::dev.off())
 	print(plot)
-	dev.off()
 
 }

@@ -56,7 +56,7 @@ chop.breaks <- function(x, n, method, midpoint=NA) {
 		breaks <- unique(as.vector(switch(method,
 			pretty = pretty(x, n),
 			cut = seq(min(x, na.rm=TRUE),max(x, na.rm=TRUE), length=n+1),
-			quantiles = quantile(x, seq(0,1, length=n+1), na.rm=TRUE)
+			quantiles = stats::quantile(x, seq(0,1, length=n+1), na.rm=TRUE)
 		)))
 		attr(breaks, "midpoint.level") <- 0
 	}
@@ -113,15 +113,15 @@ rescale <- function(x, to=c(0,1), from=range(x, na.rm=TRUE)) {
 map_colour_gradient <- function(x, low="red", mid="white",high="black", midpoint = 0, from=range(x, na.rm=TRUE)) {
 	if (length(x) == 0) return()
 	ashcl <- function(x) {
-		rgba <- col2rgb(x, TRUE)/ 255
-		c(as.vector(convertColor(matrix(rgba[1:3], ncol=3), "sRGB", "Lab")), rgba[4])
+		rgba <- grDevices::col2rgb(x, TRUE)/ 255
+		c(as.vector(grDevices::convertColor(matrix(rgba[1:3], ncol=3), "sRGB", "Lab")), rgba[4])
 	}
 	x <- as.numeric(x)
-	low.rgb  <- col2rgb(low, alpha=TRUE) / 255# ashcl(low)
-	mid.rgb  <- col2rgb(mid, alpha=TRUE) / 255 #ashcl(mid)
-	high.rgb <- col2rgb(high, alpha=TRUE) / 255 #ashcl(high)
+	low.rgb  <- grDevices::col2rgb(low, alpha=TRUE) / 255# ashcl(low)
+	mid.rgb  <- grDevices::col2rgb(mid, alpha=TRUE) / 255 #ashcl(mid)
+	high.rgb <- grDevices::col2rgb(high, alpha=TRUE) / 255 #ashcl(high)
 
-	colour_interp <- function(i) approxfun(c(from[1], midpoint, from[2]), c(low.rgb[i], mid.rgb[i], high.rgb[i]))
+	colour_interp <- function(i) stats::approxfun(c(from[1], midpoint, from[2]), c(low.rgb[i], mid.rgb[i], high.rgb[i]))
 	interp_r <- colour_interp(1)
 	interp_g <- colour_interp(2)
 	interp_b <- colour_interp(3)
@@ -130,24 +130,7 @@ map_colour_gradient <- function(x, low="red", mid="white",high="black", midpoint
 	#labc <- convertColor(cbind(interp_l(x), interp_ax(x), interp_b(x)), "Lab", "sRGB")
 	#apply(cbind(labc, interp_a(x)), 1, function(x) do.call(rgb, as.list(x)))
 
-	rgb(interp_r(x), interp_g(x), interp_b(x), interp_a(x))
-}
-
-# Aesthetic mapping: hsv components of colour
-# Map variables to hue, saturation or value
-#
-# @arguments hue
-# @arguments saturation
-# @arguments value
-# @arguments alpha
-# @arguments hue range
-# @arguments saturation range
-# @arguments value range
-# @arguments alpha range
-# @keyword hplot
-# @alias map_color_hsv
-map_colour_hsv <- function(h=1, s=1, v=1, a=1, h.to=c(0,1), s.to=c(0,1), v.to=c(0,1), a.to=c(0,1), h.from=range(h, na.rm=TRUE), s.from = range(s, na.rm=TRUE), v.from = range(v, na.rm=TRUE), a.from = range(a, na.rm=TRUE)) {
-	.map_colour(list(h,s,v,a), list(h.to, s.to, v.to, a.to), list(h.from, s.from, v.from, a.from), hsv)
+	grDevices::rgb(interp_r(x), interp_g(x), interp_b(x), interp_a(x))
 }
 
 # Aesthetic mapping: hcl components of colour
@@ -166,7 +149,7 @@ map_colour_hsv <- function(h=1, s=1, v=1, a=1, h.to=c(0,1), s.to=c(0,1), v.to=c(
 # @keyword hplot
 # @alias map_color_hcl
 map_colour_hcl <- function(h=0, c=80, l=50, a=1, h.to=c(0,360), c.to=c(0,200), l.to=c(0,100), a.to=c(0,1), h.from = range(h, na.rm=TRUE), c.from = range(c, na.rm=TRUE), l.from = range(l, na.rm=TRUE), a.from = range(a, na.rm=TRUE)) {
-	.map_colour(list(h,c,l,a), list(h.to, c.to, l.to, a.to), list(h.from, c.from, l.from, a.from), hcl)
+	.map_colour(list(h,c,l,a), list(h.to, c.to, l.to, a.to), list(h.from, c.from, l.from, a.from), grDevices::hcl)
 }
 
 # Aesthetic mapping: rgb components of colour
@@ -183,7 +166,7 @@ map_colour_hcl <- function(h=0, c=80, l=50, a=1, h.to=c(0,360), c.to=c(0,200), l
 # @keyword hplot
 # @alias map_color_rgb
 map_colour_rgb <- function(r=0, g=0, b=0, a=1, r.to = c(0,1), g.to=c(0,1), b.to=c(0,1), a.to=c(0,1), r.from = range(r, na.rm=TRUE), g.from = range(g, na.rm=TRUE), b.from = range(b, na.rm=TRUE), a.from = range(a, na.rm=TRUE)) {
-	.map_colour(list(r,g,b,a), list(r.to, g.to, b.to, a.to), list(r.from, g.from, b.from, a.from), rgb)
+	.map_colour(list(r,g,b,a), list(r.to, g.to, b.to, a.to), list(r.from, g.from, b.from, a.from), grDevices::rgb)
 }
 
 
@@ -334,6 +317,5 @@ brewer_palettes <- function(type) {
 # Alias all colour to color
 map_color_brewer <- map_colour_brewer
 map_color_gradient <- map_colour_gradient
-map_color_hsv <- map_colour_hsv
 map_color_hcl <- map_colour_hcl
 map_color_rgb <- map_colour_rgb

@@ -20,7 +20,7 @@ scales <- function(...) {
 }
 input.scales <- function(scale)  lapply(scale, input)
 output.scales <- function(scale) lapply(scale, output)
-print.scales <- function(x, ...) str(x)
+print.scales <- function(x, ...) utils::str(x)
 range.scales <- function(scales, ...) position_apply(scales, range)
 guides.scales <- function(scale, ...) {
 	position_apply(scale, guides)

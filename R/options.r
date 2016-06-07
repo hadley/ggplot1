@@ -69,7 +69,7 @@
 # Print options
 #
 # @keyword internal
-print.options <- function(x, ...) str(x)
+print.options <- function(x, ...) utils::str(x)
 
 # Set ggplot theme.
 # A theme is a list of options for \code{\link{ggopt}}.

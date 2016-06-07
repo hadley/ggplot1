@@ -63,7 +63,6 @@
 #' 	\item \code{\link{sccolour}}: colour categorical variables using Brewer colour scales (see also \'code{\link{scfill}})
 #' 	\item \code{\link{scgradient}}: colour continuous scales with a gradient (see also \code{\link{sc'fillgradient}})
 #' 	\item \code{\link{schcl}}: map continuous variable to hue, chroma or luminance components (see a'lso \code{\link{scfillhcl}})
-#' 	\item \code{\link{schsv}}: map continuous variable to hue, saturation or value components (see a'lso \code{\link{scfillhsv}})
 #' 	\item \code{\link{scmanual}}: no automatic conversion, uses raw values directly
 #' 	\item \code{\link{sclinetype}}: line type (solid, dashed, dotted, etc.)
 #' 	\item \code{\link{scrgb}}: map continuous variable to red, green or blue components (see also \'code{\link{scfillrgb}})
@@ -156,11 +155,6 @@ print.ggplot <- function(x, newpage = is.null(vp), vp = NULL, save=ggopt()$save,
 		pushViewport(vp)
 		grid.draw(ggplot_plot(x, ...))
 		upViewport()
-	}
-
-	if (save) {
-		dev.off()
-		print("\\includegraphics")
 	}
 }
 

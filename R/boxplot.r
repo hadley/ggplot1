@@ -21,7 +21,7 @@ boxplot.weighted.formula <- function(formula, data = NULL, ..., weights=1, subse
 
 boxplot.weighted <-
 function (x, weights=1, ..., range = 1.5, width = NULL, varwidth = FALSE,
-    notch = FALSE, outline = TRUE, names, plot = TRUE, border = par("fg"),
+    notch = FALSE, outline = TRUE, names, plot = TRUE, border = graphics::par("fg"),
     col = NULL, log = "", pars = list(boxwex = 0.8, staplewex = 0.5,
         outwex = 0.5), horizontal = FALSE, add = FALSE, at = NULL)
 {
@@ -70,7 +70,7 @@ function (x, weights=1, ..., range = 1.5, width = NULL, varwidth = FALSE,
     z <- list(stats = stats, n = ng, conf = conf, out = out,
         group = group, names = names)
     if (plot) {
-        bxp(z, width, varwidth = varwidth, notch = notch, log = log,
+        graphics::bxp(z, width, varwidth = varwidth, notch = notch, log = log,
             border = border, boxfill = col, pars = pars, outline = outline,
             horizontal = horizontal, add = add, at = at)
         invisible(z)
@@ -87,7 +87,7 @@ boxplot_stats_weighted <- function (x, coef = 1.5, weights=1, do.conf = TRUE, do
 		stats <- as.numeric(coef(quantreg::rq(x ~ 1, weight = weights, tau=c(0, 0.25, 0.5, 0.75, 1))))
 		n <- sum(weights[nna])
 	} else {
-		stats <- as.numeric(quantile(x, c(0, 0.25, 0.5, 0.75, 1)))
+		stats <- as.numeric(stats::quantile(x, c(0, 0.25, 0.5, 0.75, 1)))
 		n <- sum(nna)
 	}
 

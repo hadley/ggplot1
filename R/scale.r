@@ -20,11 +20,9 @@
 # @alias scale_fill
 # @alias scale_fill_brewer
 # @alias scale_fill_hcl
-# @alias scale_fill_hsv
 # @alias scale_fill_rgb
 # @alias scale_gradient
 # @alias scale_hcl
-# @alias scale_hsv
 # @alias scale_linetype
 # @alias scale_manual
 # @alias scale_rgb

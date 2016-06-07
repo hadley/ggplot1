@@ -31,9 +31,9 @@ match.fun.null <- function(x) {
 # @arguments alpha level [0,1]
 # @keyword internal
 alpha <- function(colour, alpha) {
-	col <- col2rgb(colour, TRUE) / 255
+	col <- grDevices::col2rgb(colour, TRUE) / 255
 	col[4, ] <- alpha
-	rgb(col[1,], col[2,], col[3,], col[4,])
+	grDevices::rgb(col[1,], col[2,], col[3,], col[4,])
 }
 
 # Apply with built in try

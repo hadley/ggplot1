@@ -56,7 +56,7 @@ gghistogram <- function(plot = .PLOT, aesthetics=list(), scale="prob", ..., data
 }
 pre_histogram <- function(data, breaks=20, scale="prob", ...) {
 	if (is.function(breaks)) breaks <- breaks(data$x)
-	h <- hist(data$x, breaks=breaks, plot=FALSE, ...)
+	h <- graphics::hist(data$x, breaks=breaks, plot=FALSE, ...)
 
 	if (!is.null(data$weight)) {
 		h$counts <- tapply(data$weight, cut(data$x, h$breaks), sum)
@@ -125,7 +125,7 @@ grob_quantile <- function(aesthetics, quantiles=c(0.05, 0.25, 0.5, 0.75, 0.95), 
 	xseq <- seq(min(aesthetics$x, na.rm=TRUE), max(aesthetics$x, na.rm=TRUE), length=30)
 
 	model <- quantreg::rq(formula, data=aesthetics, tau=quantiles, weight=weight) #
-	yhats <- predict(model, data.frame(x=xseq))
+	yhats <- stats::predict(model, data.frame(x=xseq))
 	qs <- data.frame(y = as.vector(yhats), x = xseq, id = rep(quantiles, each=length(xseq)))
 	qs$size <- (0.5 - abs(0.5 - qs$id))*5 + 0.5
 
@@ -195,7 +195,7 @@ grob_boxplot <- function(aesthetics, breaks=length(unique(aesthetics$x)), orient
 	xrange <- list(
 		min =    tapply(aesthetics$x, breakpoints, min, na.rm=TRUE),
 		max =    tapply(aesthetics$x, breakpoints, max, na.rm=TRUE),
-		median = tapply(aesthetics$x, breakpoints, median, na.rm=TRUE),
+		median = tapply(aesthetics$x, breakpoints, stats::median, na.rm=TRUE),
 		width =  tapply(aesthetics$x, breakpoints, function(x) diff(range(x, na.rm=TRUE))) * 0.5 + 0.5,
 		colour = tapply(rep(as.character(aesthetics$colour),length=n), breakpoints, function(x) x[1]),
 		fill =   tapply(rep(as.character(aesthetics$fill),  length=n), breakpoints, function(x) x[1])
@@ -274,7 +274,7 @@ grob_boxplot <- function(aesthetics, breaks=length(unique(aesthetics$x)), orient
 ggsmooth <- function(plot = .PLOT, aesthetics=list(), ..., data=NULL) {
 	gg_add("smooth", plot, aesthetics, ..., data=data)
 }
-grob_smooth <- function(aesthetics, method=loess, formula=y~x, se = TRUE, ...) {
+grob_smooth <- function(aesthetics, method=stats::loess, formula=y~x, se = TRUE, ...) {
 	aesthetics <- aesdefaults(aesthetics, list(colour="black", size=1, weight=rep(1, length(aesthetics$x))), ...)
 	xseq <- seq(min(aesthetics$x, na.rm=TRUE), max(aesthetics$x, na.rm=TRUE), length=80)
 	method <- match.fun(method)
@@ -283,7 +283,7 @@ grob_smooth <- function(aesthetics, method=loess, formula=y~x, se = TRUE, ...) {
 	size <- reshape::uniquedefault(aesthetics$size, 1)
 
 	model <- method(formula, data=aesthetics, ..., weight=weight)
-	pred <- predict(model, data.frame(x=xseq), se=se)
+	pred <- stats::predict(model, data.frame(x=xseq), se=se)
 
 	if (se) {
 		gTree(children=gList(
@@ -351,7 +351,7 @@ grob_contour <- function(aesthetics, nlevels=10, levels, ...) {
 	gridz <- matrix(NA, nrow = length(gridx$unique), ncol = length(gridy$unique))
 	gridz[(gridy$id - 1) * length(gridx$unique) + gridx$id] <- aesthetics$z
 
-	clines <- contourLines(x = gridx$unique, y = gridy$unique, z = gridz, nlevels = nlevels, levels = levels)
+	clines <- grDevices::contourLines(x = gridx$unique, y = gridy$unique, z = gridz, nlevels = nlevels, levels = levels)
 
 	gTree(children = do.call(gList, lapply(clines, grob_path, ...))) # , name="contour"
 }
@@ -409,7 +409,7 @@ ggdensity <- function(plot = .PLOT, aesthetics=list(), ..., data=NULL) {
 pre_density <- function(data, adjust=1, kernel="gaussian", ...) {
 	if (is.null(data$weight)) data$weight <- rep(1/length(data$x), length(data$x))
 
-	dens <- density(data$x, adjust=adjust, kernel=kernel, weight=data$weight)
+	dens <- stats::density(data$x, adjust=adjust, kernel=kernel, weight=data$weight)
 	densdf <- as.data.frame(dens[c("x","y")])
 	aestheticvars <- intersect(c("colour","linetype","size"), names(data))
 	densdf[,aestheticvars] <- data[1,aestheticvars]
@@ -464,7 +464,7 @@ gg2density <- function(plot = .PLOT, aesthetics=list(), ..., data=NULL) {
 
 grob_2density <- function(aesthetics, ...) {
 	df <- data.frame(aesthetics[, c("x", "y")])
-	df <- df[complete.cases(df), ]
+	df <- df[stats::complete.cases(df), ]
 	dens <- do.call(MASS::kde2d, df)
 	densdf <- data.frame(expand.grid(x = dens$x, y = dens$y), z=as.vector(dens$z))
 	grob_contour(densdf, ...)

@@ -27,7 +27,7 @@
 #X mdf(Freq ~ Class + Sex + Age, tt)
 #X mdf(Freq ~ Class + Sex + Age, tt, direction=c("v","h","v"))
 mdf <- function(formula=~., df, direction, offset, xrange=c(0,1), yrange=c(0,1)) {
-  df <- as.data.frame(xtabs(formula, df))
+  df <- as.data.frame(stats::xtabs(formula, df))
   n <- sum(df$Freqs)
 
   data <- mosaicdata(df, direction, offset, xrange, yrange)
