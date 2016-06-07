@@ -1,6 +1,5 @@
-Package: ggplot
-Version: 0.4.2
-Date: 2007-05-05
+Package: ggplot1
+Version: 0.0.1.9000
 Title: An implementation of the Grammar of Graphics in R
 Description: An implementation of the grammar of graphics in R. It combines
     the advantages of both base and lattice graphics: conditioning and shared
