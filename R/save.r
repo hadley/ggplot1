@@ -1,16 +1,16 @@
-# ggsave
-# Save a ggplot with sensible defaults
-#
-# @arguments plot to save
-# @arguments file name/path of plot
-# @arguments device to use, automatically extract from file name extension
-# @arguments scaling factor
-# @arguments width (in inches)
-# @arguments height (in inches)
-# @arguments grid to use, normal for white on pale grey, print for pale grey on white
-# @arguments dpi to use for raster graphics
-# @arguments other arguments passed to device function
-# @keyword file
+#' ggsave
+#' Save a ggplot with sensible defaults
+#'
+#' @param plot plot to save
+#' @param filename file name/path of plot
+#' @param device device to use, automatically extract from file name extension
+#' @param scale scaling factor
+#' @param width width (in inches)
+#' @param height height (in inches)
+#' @param grid grid to use, normal for white on pale grey, print for pale grey on white
+#' @param dpi dpi to use for raster graphics
+#' @param ... other arguments passed to device function
+#' @export
 ggsave <- function(plot, filename=default_name(plot), device=default_device(filename), scale=1, width=graphics::par("din")[1], height=graphics::par("din")[2], grid="normal", dpi=96, ...) {
 
 	pdf <- function(..., version="1.4") grDevices::pdf(..., version=version)
