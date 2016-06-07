@@ -749,6 +749,10 @@ grob_tile  <- function(aesthetics, ...) {
 	grob_rect(aesthetics, justification=c("centre","centre")) #, name="tile"
 }
 
+#' Compute resolution of a vector
+#'
+#' @param x A numeric vector
+#' @export
 resolution <- function(x) {
 	un <- unique(as.numeric(x))
 	if (length(un) == 1) return(1)

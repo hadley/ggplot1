@@ -1,14 +1,15 @@
 # Chop
-# Chop a continuous variable into a categorical variable.
-#
-# Chop provides a convenient interface to the main methods of
-# converting a continuous variable into a categorical variable.
-#
-# @argument continuous variable to chop into pieces
-# @argument number of bins to chop into
-# @argument method to use: quantiles (approximately equal numbers), cut (equal lengths) or pretty
-# @argument mid point for diverging factors
-# @keyword manip
+#' Chop a continuous variable into a categorical variable.
+#'
+#' Chop provides a convenient interface to the main methods of
+#' converting a continuous variable into a categorical variable.
+#'
+#' @param x continuous variable to chop into pieces
+#' @param n number of bins to chop into
+#' @param method method to use: quantiles (approximately equal numbers), cut (equal lengths) or pretty
+#' @param midpoint mid point for diverging factors
+#' @param digits number of digits to show in labels
+#' @export
 chop <- function(x, n=5, method="quantiles", midpoint=0, digits=2) {
 	methods <- c("quantiles","cut", "pretty")
 	method <- methods[charmatch(method, methods)]
@@ -64,11 +65,11 @@ chop.breaks <- function(x, n, method, midpoint=NA) {
 	breaks
 }
 
-# Automatic chop
-# Keep categorical variables as is, chop up continuous variable
-#
-# @argument data
-# @keyword manip
+#' Automatic chop
+#' Keep categorical variables as is, chop up continuous variable
+#'
+#' @param x data
+#' @export
 chop_auto <- function(x) {
 	if(is.factor(x)) return(x)
 	if (length(unique(x)) < 5) return(factor(x))
