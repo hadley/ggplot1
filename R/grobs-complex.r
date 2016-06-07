@@ -282,7 +282,7 @@ grob_smooth <- function(aesthetics, method=stats::loess, formula=y~x, se = TRUE,
 	colour <- as.character(reshape::uniquedefault(aesthetics$colour, "black"))
 	size <- reshape::uniquedefault(aesthetics$size, 1)
 
-	model <- method(formula, data=aesthetics, ..., weight=aesthetics$weight)
+	model <- method(formula, data=aesthetics, ..., weight=weight)
 	pred <- stats::predict(model, data.frame(x=xseq), se=se)
 
 	if (se) {
