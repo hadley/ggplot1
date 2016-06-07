@@ -16,7 +16,7 @@ You can install ggplot1 from github with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("ggplot1/hadley")
+devtools::install_github("hadley/ggplot1")
 ```
 
 Usage
