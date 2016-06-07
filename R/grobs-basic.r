@@ -538,7 +538,6 @@ grob_ribbon <- function(aesthetics, ...) {
 #' ggarea(p)
 #' ggarea(p, colour="black")
 #' ggline(ggarea(p)) # better
-#' qplot(year, level, data=huron, type=c("area", "line"))
 #' ggarea(p, fill=alpha("grey80", 0.5))
 #' pscontinuous(ggarea(p), "y", range=c(0,NA))
 ggarea <- function(plot, aesthetics=list(), ..., data=NULL) {

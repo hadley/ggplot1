@@ -42,12 +42,6 @@
 #X
 #X p <- ggbar(ggplot(data=df, aes=list(fill=g, y=y, x=x)))
 #X ggerrorbar(p, aes=list(plus=bar))
-#X qplot(x,y,df,types=list("bar","errorbar"), avoid="dodge",aes=list(fill=g,plus=bar))
-#X qplot(x,y,df,types=list("bar","errorbar"), avoid="dodge",aes=list(fill=g,plus=bar, minus=-2*bar))
-#X qplot(x,y,df2,types=list("point","errorbar"), aes=list(plus=bar), width=0.1)
-#X qplot(x,y,df2,types=list("bar","line","point","errorbar"), aes=list(fill=g,plus=bar,barcolour=g))
-#X qplot(x,y,df2,types=list("jitter","errorbar"), aes=list(plus=bar))
-#X qplot(x,y,df,types=list("point","line","errorbar"), aes=list(plus=bar,id=g), width=0.1)
 ggerrorbar <- function(plot, aesthetics = list(), ..., data = NULL) {
    plot <- pscontinuous(plot, "y", range = c(0, NA), expand = c(0.05, 0))
    gg_add("errorbar", plot, aesthetics, ..., data = data)

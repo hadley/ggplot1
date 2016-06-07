@@ -16,8 +16,6 @@
 #'  \item Add grobs to the plot (\code{ggpoint(p)})
 #' }
 #'
-#' or, use \code{\link{qplot}}
-#'
 #' Simple grobs:
 #'
 #' \itemize{
