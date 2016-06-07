@@ -288,9 +288,9 @@ grob_smooth <- function(aesthetics, method=loess, formula=y~x, se = TRUE, ...) {
 	if (se) {
 		gTree(children=gList(
 			grob_path(list(y = as.vector(pred$fit), x = xseq, colour=colour, size=size)),
-			grob_path(list(y = as.vector(pred$fit + 2 * pred$se), x = xseq, colour="grey80")),
-			grob_path(list(y = as.vector(pred$fit - 2 * pred$se), x = xseq, colour="grey80")),
-			grob_ribbon(list(y = c(pred$fit + 2 * pred$se, rev(pred$fit - 2 * pred$se)), x = c(xseq,rev(xseq))), colour=NA, fill=alpha("grey50", 0.2))
+			grob_path(list(y = as.vector(pred$fit + 2 * pred$se.fit), x = xseq, colour="grey80")),
+			grob_path(list(y = as.vector(pred$fit - 2 * pred$se.fit), x = xseq, colour="grey80")),
+			grob_ribbon(list(y = c(pred$fit + 2 * pred$se.fit, rev(pred$fit - 2 * pred$se.fit)), x = c(xseq,rev(xseq))), colour=NA, fill=alpha("grey50", 0.2))
 		)) # , name="smooth"
 	} else {
 		grob_path(list(y = as.vector(pred), x = xseq, colour=colour, size=size))
