@@ -13,9 +13,9 @@
 # @keyword file
 ggsave <- function(plot = .PLOT, filename=default_name(plot), device=default_device(filename), scale=1, width=par("din")[1], height=par("din")[2], grid="normal", dpi=96, ...) {
 
-	pdf <- function(..., version="1.4") grDevices:::pdf(..., version=version)
-	png <- function(..., width, height) grDevices:::png(..., width=width*dpi, height=height*dpi)
-	jpeg <- function(..., width, height) grDevices:::jpeg(..., width=width*dpi, height=height*dpi)
+	pdf <- function(..., version="1.4") grDevices::pdf(..., version=version)
+	png <- function(..., width, height) grDevices::png(..., width=width*dpi, height=height*dpi)
+	jpeg <- function(..., width, height) grDevices::jpeg(..., width=width*dpi, height=height*dpi)
 
 	default_name <- function(plot) {
 		title <- if (is.null(plot$title) || nchar(plot$title) == 0) "ggplot" else plot$title
