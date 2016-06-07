@@ -2,7 +2,7 @@ Package: ggplot1
 Version: 0.0.1.9000
 Title: Before there was ggplot2
 Description: This is the original ggplot package brought back to life mostly
-    for historial interest.
+    for historical interest.
 Author: Hadley Wickham <h.wickham@gmail.com>
 Maintainer: Hadley Wickham <h.wickham@gmail.com>
 Suggests:
