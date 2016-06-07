@@ -50,3 +50,11 @@ tryNULL <- function(expr)  {
   result
 }
 
+defaults <- function(x, y) {
+  c(x, y[setdiff(names(y), names(x))])
+}
+
+
+compact <- function(x) {
+  x[!vapply(x, is.null, logical(1))]
+}

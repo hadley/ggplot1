@@ -55,12 +55,12 @@ guides.scales <- function(scale, ...) {
 # @keyword internal
 "update<-.scales" <- function(x, value) {
 	if (is.matrix(value)) {
-		value <- do.call(rbind.fill, value)
+		value <- do.call(plyr::rbind.fill, value)
 	} else if(is.list(value) && !is.data.frame(value)) {
 		if (length(value) == 0) {
 			value <- NULL
 		} else {
-			value <- do.call(rbind.fill, unlist(value, recursive=FALSE))
+			value <- do.call(plyr::rbind.fill, unlist(value, recursive=FALSE))
 		}
 	}
 	structure(lapply(x, "update<-", value=value), class="scales")
