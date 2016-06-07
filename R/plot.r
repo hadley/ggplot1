@@ -106,11 +106,23 @@
 #' ggpoint(p, colour = "darkgreen", size = 3)
 #' ggpoint(p, list(colour = sex))
 #' ggpoint(ggplot(tips, . ~ sex, aesthetics = list(y = tip, x = total_bill)))
+#'
+#' # Create complex plots from simple components
 #' p <- ggplot(tips, smoker ~ sex, aesthetics = list(y = tip, x = total_bill))
-#' ggpoint(p)
-#' ggsmooth(ggpoint(p))
-#' ggsmooth(ggpoint(p), method = lm, formula = y~x)
-#' ggabline(ggpoint(p), slope = c(0.1,0.15,0.2))
+#' p %>% ggpoint()
+#'
+#' p %>%
+#'   ggpoint() %>%
+#'   ggsmooth()
+#'
+#' p %>%
+#'   ggpoint() %>%
+#'   ggsmooth(method = lm, formula = y~x)
+#'
+#' p %>%
+#'   ggpoint() %>%
+#'  ggabline(slope = c(0.1,0.15,0.2))
+#'
 #' (p2 <- ggabline(ggpoint(p, aes = list(colour = tip/total_bill)), slope = c(0.1, 0.15, 0.2)))
 #' summary(p2)
 #' scgradient(p2)
