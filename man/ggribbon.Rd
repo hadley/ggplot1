@@ -53,6 +53,9 @@ ggribbon(p, aes=list(y=number, plus=5, minus=-5), fill="white", colour=NA)
 ggribbon(p, aes=list(upper=number*1.1, lower=number*0.9), fill="white", colour=NA)
 ggribbon(p, aes=list(upper=number+5, lower=number-5), fill="pink")
 ggribbon(p, aes=list(upper=number+5, lower=number-5, fill=rating), colour=NA)
-scfillgradient(ggribbon(p, aes=list(upper=number+5, lower=number-5, fill=rating), colour=NA), midpoint=5, low="red", high="darkgreen")
+scfillgradient(
+  ggribbon(p, aes=list(upper=number+5, lower=number-5, fill=rating), colour=NA),
+  midpoint=5, low="red", high="darkgreen"
+)
 }
 
