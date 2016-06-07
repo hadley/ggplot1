@@ -56,7 +56,7 @@ gghistogram <- function(plot = .PLOT, aesthetics=list(), scale="prob", ..., data
 }
 pre_histogram <- function(data, breaks=20, scale="prob", ...) {
 	if (is.function(breaks)) breaks <- breaks(data$x)
-	h <- hist(data$x, breaks=breaks, freq=FALSE, plot=FALSE, ...)
+	h <- hist(data$x, breaks=breaks, plot=FALSE, ...)
 
 	if (!is.null(data$weight)) {
 		h$counts <- tapply(data$weight, cut(data$x, h$breaks), sum)
