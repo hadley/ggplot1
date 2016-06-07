@@ -41,7 +41,11 @@ Other options:
 \examples{
 mry <- do.call(rbind, by(movies, round(movies$rating), function(df) {
 	nums <- tapply(df$length, df$year, length)
-	data.frame(rating=round(df$rating[1]), year = as.numeric(names(nums)), number=as.vector(nums))
+	data.frame(
+	  rating = round(df$rating[1]),
+	  year = as.numeric(names(nums)),
+	  number = as.vector(nums)
+	)
 }))
 p <- ggplot(mry, aesthetics = list(x=year, y=number, id=rating))
 ggribbon(p, aes=list(upper=number+5, lower=number-5), fill="white", colour=NA)

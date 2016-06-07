@@ -120,25 +120,9 @@ scale_new <- function(input, output=names(input), name = paste(input, collapse="
 	structure(list(input=input, output=output, name=name, ...), class=c(class, "scale"))
 }
 
-# Scale apply combine map
-#
-# @keyword internal
-#X scale_new(c(size="3 * height"), "size", range=c(0, 5), class="size")
-#X scale_new(c(x="weight", y="height"), c("x", "y"), class=c("equal", "position"))
-#X scale_new(c(group="age"), c("colour", "glyph"), class="group")
-#X scale_new(c())
-scale_apply_combine_map <- function(scale, rdmatrix) {
-	domains <- c()
-	ranges <- c()
-
-	mapply(scale_map, cmatrix, domains, ranges)
-}
-
 scale_domain <- function(scale, rdmatrix, options) {
 	if (!inherits(scale, "position")) return(range2(rdmatrix))
-
-
-	iapply(rdmatrix, c(1,2), range2)
+	plyr::aaply(rdmatrix, c(1,2), range2)
 }
 
 range2 <- function(inputs) {

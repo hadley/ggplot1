@@ -16,7 +16,7 @@
 # @arguments scales grobs
 # @keyword hplot
 # @keyword internal
-viewport_default <- function(plot, guides=guides_basic(plot), scales=scales_default(plot)) {
+viewport_default <- function(plot, guides, scales) {
 	gm <- plot$facet
 	row.labels <- reshape::rrownames(gm)
 	col.labels <- reshape::rcolnames(gm)

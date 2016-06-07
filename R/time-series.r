@@ -18,13 +18,13 @@ position_time <- function(variable="x", name="", transform=trans_none, range=c(N
 }
 
 breaks.time <- function(scale, ...) {
-	sdates <- seq.dates(scale$range[1], scale$range[2], by=scale$by)
+	sdates <- seq(scale$range[1], scale$range[2], by=scale$by)
 	scale$transform[[1]](as.numeric(sdates))
 }
 
 
 labels.time <- function(object, ...) {
-	as.character(seq.dates(object$range[1], object$range[2], by=object$by))
+	as.character(seq(object$range[1], object$range[2], by=object$by))
 }
 
 range.time <- function(scale, ...)

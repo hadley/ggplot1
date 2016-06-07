@@ -51,8 +51,8 @@ function (x, weights=1, ..., range = 1.5, width = NULL, varwidth = FALSE,
     else NULL
 
     for (i in 1:n) groups[i] <- list(boxplot_stats_weighted(unclass(groups[[i]]), range, weights=weights[[i]]))
-    stats <- matrix(0, nr = 5, nc = n)
-    conf <- matrix(0, nr = 2, nc = n)
+    stats <- matrix(0, nrow =  5, ncol = n)
+    conf <- matrix(0, nrow = 2, ncol = n)
     ng <- out <- group <- numeric(0)
     ct <- 1
     for (i in groups) {
@@ -83,7 +83,7 @@ boxplot_stats_weighted <- function (x, coef = 1.5, weights=1, do.conf = TRUE, do
 	nna <- !is.na(x)
 
 	if (length(unique(weights)) != 1) {
-		if (!requireNamespace(quantreg, quietly=TRUE)) stop("You need to install the quantreg package for weighted boxplots!")
+		if (!requireNamespace("quantreg", quietly=TRUE)) stop("You need to install the quantreg package for weighted boxplots!")
 		stats <- as.numeric(coef(quantreg::rq(x ~ 1, weight = weights, tau=c(0, 0.25, 0.5, 0.75, 1))))
 		n <- sum(weights[nna])
 	} else {

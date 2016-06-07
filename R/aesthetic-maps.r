@@ -254,7 +254,7 @@ map_colour_brewer <- function(x, palette=1){
 	if (n > 9) stop("Too many levels! 9 at most")
 	if (n < 3) stop("Too few levels! 3 at least")
 
-	pal <- brewer.pal(n, brewer_palettes(type)[palette])
+	pal <- RColorBrewer::brewer.pal(n, brewer_palettes(type)[palette])
 	pal[x]
 }
 map_color_brewer <- map_colour_brewer

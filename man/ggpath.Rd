@@ -41,7 +41,11 @@ Other options:
 }
 }
 \examples{
-myear <- do.call(rbind, by(movies, movies$year, function(df) data.frame(year=df$year[1], mean.length = mean(df$length), mean.rating=mean(df$rating))))
+myear <- do.call(rbind, by(movies, movies$year, function(df) data.frame(
+  year = df$year[1],
+  mean.length = mean(df$length),
+  mean.rating = mean(df$rating)
+)))
 p <- ggplot(myear, aesthetics=list(x=mean.length, y=mean.rating))
 ggpath(p)
 ggpath(p, list(size=year))

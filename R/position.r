@@ -45,15 +45,15 @@ output.ps_double <- function(scale) c("x","y")
 
 breaks.ps_double <- function(scale, ...) {
 	list(
-		x = breaks.scale_position(range(scale)$x),
-		y = breaks.scale_position(range(scale)$y)
+		x = breaks.continuous(range(scale)$x),
+		y = breaks.continuous(range(scale)$y)
 	)
 }
 
 labels.ps_double <- function(object, ...) {
 	list(
-		x = as.character(breaks.scale_position(range(object)$x)),
-		y = as.character(breaks.scale_position(range(object)$y))
+		x = as.character(breaks.continuous(range(object)$x)),
+		y = as.character(breaks.continuous(range(object)$y))
 	)
 }
 

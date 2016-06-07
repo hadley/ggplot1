@@ -76,16 +76,15 @@ pre_errorbar <- function(data, avoid="none", sort=FALSE, ...) {
 
 grob_errorbar <- function (aesthetics, avoid = "none", ...) {
 	aesthetics <- aesdefaults(aesthetics, list(colour = "black", size=1, linetype=1), ...)
-	aesthetics <- transform(
-		position_adjust(aesthetics, avoid=avoid, "vertical", adjust=2),
-		width = width * 0.3
-	)
+	aesthetics <- position_adjust(aesthetics, avoid=avoid, "vertical", adjust=2)
+	aesthetics$width <- aesthetics$width * 0.3
 
-	aesm <- melt(as.data.frame(aesthetics), m="y")
-	aesthetics <- as.data.frame(cast(aesm, ... ~ variable + .pos))
+	aesm <- reshape::melt(as.data.frame(aesthetics), m="y")
+	aesthetics <- as.data.frame(reshape::cast(aesm, ... ~ variable + .pos))
 
-	aesthetics <- rename(aesthetics, c(y_t = "t", y_b="b"))
-	aesthetics <- transform(aesthetics, l = x - width, r = x + width)
+	aesthetics <- plyr::rename(aesthetics, c(y_t = "t", y_b="b"))
+	aesthetics$l <- aesthetics$x - aesthetics$width
+	aesthetics$r <- aesthetics$x + aesthetics$width
 
 	with(aesthetics, polylineGrob(
 		as.vector(rbind(l, r, x, x, r, l)), as.vector(rbind(t,t,t,b,b,b)), default.units="native", id.lengths=rep(6, nrow(aesthetics)),

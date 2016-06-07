@@ -120,11 +120,11 @@ ggquantile <- function(plot = .PLOT, aesthetics=list(), ..., data=NULL) {
 }
 grob_quantile <- function(aesthetics, quantiles=c(0.05, 0.25, 0.5, 0.75, 0.95), formula=y ~ splines::ns(x, 5), ...) {
 	aesthetics <- aesdefaults(aesthetics, list(weight=rep(1, length(aesthetics$y))), ...)
-	if (!requireNamespace(quantreg, quietly=TRUE)) stop("You need to install the quantreg package!")
+	if (!requireNamespace("quantreg", quietly=TRUE)) stop("You need to install the quantreg package!")
 
 	xseq <- seq(min(aesthetics$x, na.rm=TRUE), max(aesthetics$x, na.rm=TRUE), length=30)
 
-	model <- quantreg::rq(formula, data=aesthetics, tau=quantiles, weight=weight) #
+	model <- quantreg::rq(formula, data=aesthetics, tau=quantiles, weight=aesthetics$weight) #
 	yhats <- stats::predict(model, data.frame(x=xseq))
 	qs <- data.frame(y = as.vector(yhats), x = xseq, id = rep(quantiles, each=length(xseq)))
 	qs$size <- (0.5 - abs(0.5 - qs$id))*5 + 0.5
@@ -180,7 +180,7 @@ grob_boxplot <- function(aesthetics, breaks=length(unique(aesthetics$x)), orient
 	aesthetics <- aesdefaults(aesthetics, list(fill="white", colour="grey50", weight=rep(1, length(aesthetics$x))), ...)
 	swap <- function(list) {
 	  if (orientation == "vertical") return(list)
-	  rename(list, c(x="y", y="x", height="width", width="height"))
+	  plyr::rename(list, c(x="y", y="x", height="width", width="height"))
 	}
 	just <- function() switch(orientation,
 	  vertical = c("centre","bottom"),
@@ -282,7 +282,7 @@ grob_smooth <- function(aesthetics, method=stats::loess, formula=y~x, se = TRUE,
 	colour <- as.character(reshape::uniquedefault(aesthetics$colour, "black"))
 	size <- reshape::uniquedefault(aesthetics$size, 1)
 
-	model <- method(formula, data=aesthetics, ..., weight=weight)
+	model <- method(formula, data=aesthetics, ..., weight=aesthetics$weight)
 	pred <- stats::predict(model, data.frame(x=xseq), se=se)
 
 	if (se) {

@@ -17,7 +17,10 @@
 # @keyword hplot
 prettyplot <- function(plot, plotgrob) {
 	position <- plot$legend.position
-	if (length(position) == 2) position <- "manual"
+	if (length(position) == 2) {
+	  coords <- position
+	  position <- "manual"
+	}
 	horiz <- any(c("top", "bottom") %in% position)
 	vert <-  any(c("left", "right") %in% position)
 

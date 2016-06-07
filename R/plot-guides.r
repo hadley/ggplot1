@@ -23,7 +23,7 @@
 # @value labels row and column labels
 # @keyword hplot
 # @keyword internal
-guides_basic <- function(plot, scales=scales_default(plot)) {
+guides_basic <- function(plot, scales) {
 	guides <- guides(scales)
 
   nr <- nrow(plot$facet)
