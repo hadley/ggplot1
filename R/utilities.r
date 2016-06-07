@@ -58,3 +58,7 @@ defaults <- function(x, y) {
 compact <- function(x) {
   x[!vapply(x, is.null, logical(1))]
 }
+
+stamp <- function(...) {
+  suppressWarnings(reshape::stamp(...))
+}
