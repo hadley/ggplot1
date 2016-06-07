@@ -103,10 +103,10 @@
 #' ggpoint(p)
 #' ggpoint(p, colour = "darkgreen", size = 3)
 #' ggpoint(p, list(colour = sex))
-#' ggpoint(ggplot(tips, . ~ sex, aesthetics = list(y = tip, x = total_bill)))
+#' ggpoint(ggplot(tips, formula = . ~ sex, aesthetics = list(y = tip, x = total_bill)))
 #'
 #' # Create complex plots from simple components
-#' p <- ggplot(tips, smoker ~ sex, aesthetics = list(y = tip, x = total_bill))
+#' p <- ggplot(tips, formula = smoker ~ sex, aesthetics = list(y = tip, x = total_bill))
 #' p %>% ggpoint()
 #'
 #' p %>%
@@ -126,19 +126,19 @@
 #' scgradient(p2)
 #' scgradient(p2, midpoint = 0.15, high = "green", mid = "yellow")
 #'
-#' p <- ggplot(tips, sex ~ smoker, aesthetics = list(x = tip / total_bill), margins = TRUE)
+#' p <- ggplot(tips, formula = sex ~ smoker, aesthetics = list(x = tip / total_bill), margins = TRUE)
 #' gghistogram(p)
 #' gghistogram(p, scale = "density", breaks = seq(0, 1, length = 20))
 #' ggdensity(gghistogram(p))
 #'
-#' p <- ggplot(tips, . ~ smoker, aesthetics = list(x = sex, y = tip))
+#' p <- ggplot(tips, formula = . ~ smoker, aesthetics = list(x = sex, y = tip))
 #' ggboxplot(p)
 #' ggjitter(ggboxplot(p))
 ggplot <- function(data, ...) UseMethod("ggplot")
 
 #' @export
 #' @rdname ggplot
-ggplot.default <- function(data = NULL, formula = . ~ ., margins=FALSE, aesthetics=list(), ...) {
+ggplot.default <- function(data = NULL, aesthetics=list(), formula = . ~ ., margins=FALSE,...) {
 	p <- structure(list(
 		data = data,
 		grobs = list(),

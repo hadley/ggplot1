@@ -7,22 +7,22 @@
 \usage{
 ggplot(data, ...)
 
-\method{ggplot}{default}(data = NULL, formula = . ~ ., margins = FALSE,
-  aesthetics = list(), ...)
+\method{ggplot}{default}(data = NULL, aesthetics = list(), formula = . ~
+  ., margins = FALSE, ...)
 }
 \arguments{
 \item{data}{default data frame}
 
 \item{...}{Not used}
 
+\item{aesthetics}{default list of aesthetic mappings (these can be colour, size, shape,
+line type -- see individual grob functions for more details)}
+
 \item{formula}{formula describing row and column layout, see
 \code{\link[reshape]{cast}} for more details}
 
 \item{margins}{a vector of names giving which margins to display, can include
 \code{grand_row} and \code{grand_col} or us TRUE to display all margins}
-
-\item{aesthetics}{default list of aesthetic mappings (these can be colour, size, shape,
-line type -- see individual grob functions for more details)}
 }
 \description{
 This function creates the basic ggplot object which you can then
@@ -120,10 +120,10 @@ summary(p)
 ggpoint(p)
 ggpoint(p, colour = "darkgreen", size = 3)
 ggpoint(p, list(colour = sex))
-ggpoint(ggplot(tips, . ~ sex, aesthetics = list(y = tip, x = total_bill)))
+ggpoint(ggplot(tips, formula = . ~ sex, aesthetics = list(y = tip, x = total_bill)))
 
 # Create complex plots from simple components
-p <- ggplot(tips, smoker ~ sex, aesthetics = list(y = tip, x = total_bill))
+p <- ggplot(tips, formula = smoker ~ sex, aesthetics = list(y = tip, x = total_bill))
 p \%>\% ggpoint()
 
 p \%>\%
@@ -143,12 +143,12 @@ summary(p2)
 scgradient(p2)
 scgradient(p2, midpoint = 0.15, high = "green", mid = "yellow")
 
-p <- ggplot(tips, sex ~ smoker, aesthetics = list(x = tip / total_bill), margins = TRUE)
+p <- ggplot(tips, formula = sex ~ smoker, aesthetics = list(x = tip / total_bill), margins = TRUE)
 gghistogram(p)
 gghistogram(p, scale = "density", breaks = seq(0, 1, length = 20))
 ggdensity(gghistogram(p))
 
-p <- ggplot(tips, . ~ smoker, aesthetics = list(x = sex, y = tip))
+p <- ggplot(tips, formula = . ~ smoker, aesthetics = list(x = sex, y = tip))
 ggboxplot(p)
 ggjitter(ggboxplot(p))
 }
