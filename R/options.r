@@ -102,7 +102,7 @@ ggtheme <- function(theme) {
 }
 
 #' @export
-"$.ggplot" <- function(x, i) {
+"$.ggplot1" <- function(x, i) {
   if (i %in% names(x)) {
     x[[i]]
   } else {

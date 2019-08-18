@@ -146,7 +146,7 @@ ggplot.default <- function(data = NULL, aesthetics=list(), formula = . ~ ., marg
 		defaults = uneval(substitute(aesthetics)),
 		title = "",
 		fixedaspect = FALSE
-	), class="ggplot")
+	), class="ggplot1")
 
 	p$xlabel <- if (!is.null(p$defaults$x)) deparse(p$defaults$x) else ""
 	p$ylabel <- if (!is.null(p$defaults$y)) deparse(p$defaults$y) else ""
@@ -157,7 +157,7 @@ ggplot.default <- function(data = NULL, aesthetics=list(), formula = . ~ ., marg
 
 
 #' @export
-print.ggplot <- function(x, newpage = is.null(vp), vp = NULL, save=ggopt()$save, ...) {
+print.ggplot1 <- function(x, newpage = is.null(vp), vp = NULL, save=ggopt()$save, ...) {
 	if (newpage) grid.newpage()
 	if (is.null(vp)) {
 		grid.draw(ggplot_plot(x, ...))

@@ -1,5 +1,5 @@
 #' @export
-summary.ggplot <- function(object, ...) {
+summary.ggplot1 <- function(object, ...) {
   defaults <- function() {
     paste(mapply(function(x, n) {
       paste(n, deparse(x), sep="=")
