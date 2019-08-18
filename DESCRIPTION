@@ -1,24 +1,26 @@
 Package: ggplot1
-Version: 0.0.1.9000
 Title: Before there was ggplot2
-Description: This is the original ggplot package brought back to life mostly
-    for historical interest.
+Version: 0.0.1.9000
 Author: Hadley Wickham <h.wickham@gmail.com>
 Maintainer: Hadley Wickham <h.wickham@gmail.com>
-Depends: R (>= 2.10)
-Imports:
-    grid,
-    plyr,
-    MASS,
-    ggplot2movies,
-    reshape (>= 0.7.4),
-    RColorBrewer,
-    magrittr
-Suggests:
-    mapproj,
-    quantreg,
-LazyData: yes
+Description: This is the original ggplot package brought back to
+    life mostly for historical interest.
 License: GPL
-RoxygenNote: 6.1.1
 URL: https://github.com/hadley/ggplot1
 BugReports: https://github.com/hadley/ggplot1/issues
+Depends: 
+    R (>= 2.10)
+Imports:
+    ggplot2movies,
+    grid,
+    magrittr,
+    MASS,
+    plyr,
+    RColorBrewer,
+    reshape (>= 0.7.4)
+Suggests:
+    mapproj,
+    quantreg
+Encoding: UTF-8
+LazyData: yes
+RoxygenNote: 6.1.1
