@@ -49,4 +49,3 @@ ggjitter(ggboxplot(p))
 ggjitter(ggboxplot(p), xjitter=2)
 ggjitter(ggboxplot(p), yjitter=1)
 }
-

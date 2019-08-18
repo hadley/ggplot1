@@ -5,8 +5,8 @@
 \title{Scale: manual}
 \usage{
 scmanual(plot, variable = "x", name = "", breaks = NULL,
-  labels = as.character(breaks), grob = function(x) grob_point(x, unique =
-  FALSE))
+  labels = as.character(breaks), grob = function(x) grob_point(x,
+  unique = FALSE))
 }
 \arguments{
 \item{plot}{plot}
@@ -28,4 +28,3 @@ scale.
 \details{
 Supply labels and breaks to produce a legend.
 }
-

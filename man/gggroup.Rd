@@ -54,4 +54,3 @@ gggroup(p, grob="histogram", aes=list(fill=cyl))
 gggroup(ggpoint(p), grob="smooth", se=FALSE, span=1)
 gggroup(ggpoint(p), aes=list(id=cyl, size=cyl), grob="smooth", span=1)
 }
-

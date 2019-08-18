@@ -2,10 +2,10 @@
 % Please edit documentation in R/options.r
 \docType{data}
 \name{theme_bw}
-\alias{ggopt}
-\alias{ggtheme}
 \alias{theme_bw}
 \alias{theme_default}
+\alias{ggopt}
+\alias{ggtheme}
 \title{Set global options for ggplot.}
 \format{An object of class \code{list} of length 2.}
 \usage{
@@ -84,4 +84,3 @@ p # a very ugly plot!
 ggtheme(theme_default)
 }
 \keyword{datasets}
-

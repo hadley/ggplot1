@@ -52,4 +52,3 @@ ggpoint(p, list(x=cyl, colour=cyl))
 p <- ggplot(mtcars)
 ggpoint(p, aesthetics=list(x=wt, y=mpg))
 }
-

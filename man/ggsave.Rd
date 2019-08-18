@@ -33,4 +33,3 @@ ggsave(plot, filename = default_name(plot),
 ggsave
 Save a ggplot with sensible defaults
 }
-

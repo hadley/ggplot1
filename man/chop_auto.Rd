@@ -14,4 +14,3 @@ chop_auto(x)
 Automatic chop
 Keep categorical variables as is, chop up continuous variable
 }
-

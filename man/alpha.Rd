@@ -15,4 +15,3 @@ alpha(colour, alpha)
 Give a colour an alpha level
 }
 \keyword{internal}
-

@@ -14,4 +14,3 @@ setdata(p, data)
 \description{
 Set the default data set for a plot object
 }
-

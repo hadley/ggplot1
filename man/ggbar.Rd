@@ -57,4 +57,3 @@ ggbar(p, avoid="stack", sort=TRUE)
 \seealso{
 \code{\link{ggrect}}
 }
-

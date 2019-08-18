@@ -3,11 +3,11 @@
 \docType{data}
 \name{pscontinuous}
 \alias{pscontinuous}
-\alias{trans_inverse}
+\alias{trans_none}
 \alias{trans_log10}
 \alias{trans_log2}
-\alias{trans_none}
 \alias{trans_sqrt}
+\alias{trans_inverse}
 \title{Position: continuous
 Add a continuous position scale to the plot}
 \format{An object of class \code{list} of length 2.}
@@ -74,4 +74,3 @@ pscontinuous(p, "x", transform=trans_log10)
 pscontinuous(p, "x", transform=trans_log10, breaks=seq(10,30, 5))
 }
 \keyword{datasets}
-

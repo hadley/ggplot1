@@ -39,4 +39,3 @@ Other options:
   \item none
 }
 }
-

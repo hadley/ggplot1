@@ -36,4 +36,3 @@ p <- ggpoint(ggplot(mtcars, aesthetics=list(x=cyl, y=mpg)))
 pscategorical(p, "x") # no change, because already categorical
 pscategorical(p, "y") # chops into discrete segments
 }
-

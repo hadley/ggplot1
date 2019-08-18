@@ -46,4 +46,3 @@ ggtext(p, list(size=wt))
 scsize(ggtext(p, list(size=wt)), c(0.5, 1.5))
 ggtext(p, list(colour=cyl))
 }
-

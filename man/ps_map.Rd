@@ -14,4 +14,3 @@ ps_map(projection = "mercator", params = NULL)
 \description{
 This allows you to use map type projection.
 }
-

@@ -4,7 +4,8 @@
 \alias{gghistogram}
 \title{Grob function: histogram}
 \usage{
-gghistogram(plot, aesthetics = list(), scale = "prob", ..., data = NULL)
+gghistogram(plot, aesthetics = list(), scale = "prob", ...,
+  data = NULL)
 }
 \arguments{
 \item{plot}{the plot object to modify}
@@ -59,4 +60,3 @@ gghistogram(m, scale="freq")
 gghistogram(m, colour="darkgreen", fill="white")
 ggdensity(gghistogram(m, colour="darkgreen", fill="white"))
 }
-

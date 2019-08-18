@@ -62,4 +62,3 @@ ggsmooth(p, method=lm)
 ggsmooth(p, method=lm, formula = y~splines::ns(x,3))
 ggsmooth(p, method=MASS::rlm, formula = y~splines::ns(x,3))
 }
-

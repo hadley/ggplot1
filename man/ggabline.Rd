@@ -41,4 +41,3 @@ ggabline(ggpoint(p), intercept=30, slope=-5)
 ggabline(ggpoint(p), intercept=c(30,40,50), slope=-5)
 ggsmooth(ggpoint(p), method=lm, formula=y~x)
 }
-

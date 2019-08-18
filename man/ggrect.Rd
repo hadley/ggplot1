@@ -41,4 +41,3 @@ Other options:
 \seealso{
 \code{\link{ggbar}}, \code{\link{ggtile}}
 }
-

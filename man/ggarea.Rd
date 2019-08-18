@@ -48,4 +48,3 @@ ggline(ggarea(p)) # better
 ggarea(p, fill=alpha("grey80", 0.5))
 pscontinuous(ggarea(p), "y", range=c(0,NA))
 }
-

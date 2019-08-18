@@ -58,4 +58,3 @@ ggpath(p)
 ggpath(p, list(id=cyl))
 ggpath(p, list(id=cyl, linetype=cyl))
 }
-

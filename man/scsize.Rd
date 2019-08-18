@@ -30,4 +30,3 @@ ggpoint(p, list(size=wt))
 scsize(ggpoint(p, list(size=wt)), c(1,10))
 scsize(ggpoint(p, list(size=sqrt(wt))), c(1,5))
 }
-

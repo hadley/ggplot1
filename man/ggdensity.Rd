@@ -55,4 +55,3 @@ ggdensity(m, colour="darkgreen", size=5)
 \seealso{
 \code{\link{gghistogram}}, \code{\link{density}}
 }
-

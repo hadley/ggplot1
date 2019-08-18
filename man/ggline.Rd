@@ -53,4 +53,3 @@ ggline(p)
 ggpath(p, list(size=rating))
 ggpath(p, list(colour=rating))
 }
-

@@ -11,4 +11,3 @@ ps_equal()
 Equal scales
 Create a scale for axes with equal length on each
 }
-

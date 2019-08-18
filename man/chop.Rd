@@ -21,4 +21,3 @@ chop(x, n = 5, method = "quantiles", midpoint = 0, digits = 2)
 Chop provides a convenient interface to the main methods of
 converting a continuous variable into a categorical variable.
 }
-

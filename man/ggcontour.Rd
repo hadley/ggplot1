@@ -51,4 +51,3 @@ ggcontour(ggtile(p, list(fill=z)))
 \seealso{
 \code{\link{gg2density}}
 }
-

@@ -18,4 +18,3 @@ setfacets(p, formula = . ~ ., margins = FALSE)
 \description{
 Set facetting formula and margins for a plot
 }
-

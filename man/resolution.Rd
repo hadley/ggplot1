@@ -12,4 +12,3 @@ resolution(x)
 \description{
 Compute resolution of a vector
 }
-

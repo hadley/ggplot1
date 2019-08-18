@@ -53,4 +53,3 @@ gg2density(m)
 \seealso{
 \code{\link{ggcontour}} for another way of dealing with over plotting
 }
-

@@ -7,8 +7,8 @@
 \usage{
 ggplot(data, ...)
 
-\method{ggplot}{default}(data = NULL, aesthetics = list(), formula = . ~
-  ., margins = FALSE, ...)
+\method{ggplot}{default}(data = NULL, aesthetics = list(),
+  formula = . ~ ., margins = FALSE, ...)
 }
 \arguments{
 \item{data}{default data frame}
@@ -156,4 +156,3 @@ ggjitter(ggboxplot(p))
 \url{http://had.co.nz/ggplot}, \code{\link[reshape]{stamp}},
   \code{\link[reshape]{cast}}, \code{\link{ggopt}}
 }
-

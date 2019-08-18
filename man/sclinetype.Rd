@@ -21,4 +21,3 @@ p <- ggplot(mtcars, aes=list(x=mpg, y=wt, linetype=cyl))
 ggline(p)
 ggline(sclinetype(p))
 }
-

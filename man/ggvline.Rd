@@ -36,4 +36,3 @@ Other options:
 p <- ggplot(mtcars, aesthetics=list(x = wt, y=mpg))
 ggvline(ggpoint(p), position=mean(mtcars$wt), size=2)
 }
-

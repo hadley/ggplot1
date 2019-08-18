@@ -20,4 +20,3 @@ Expand range
 Convenience function for expanding a range with a multiplicative
 or additive constant.
 }
-

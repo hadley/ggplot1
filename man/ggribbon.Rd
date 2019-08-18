@@ -59,4 +59,3 @@ scfillgradient(
   midpoint=5, low="red", high="darkgreen"
 )
 }
-

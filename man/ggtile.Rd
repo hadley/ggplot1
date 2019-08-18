@@ -63,4 +63,3 @@ ggtile(p)
 \seealso{
 \code{\link{ggrect}}, \code{\link{resolution}}
 }
-

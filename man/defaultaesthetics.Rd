@@ -17,4 +17,3 @@ modified plot object
 \description{
 Modify the default aesthetics for a plot
 }
-

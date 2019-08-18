@@ -54,4 +54,3 @@ ggboxplot(p)
 \seealso{
 \code{\link{ggquantile}} for a continuous analogue of the boxplot
 }
-

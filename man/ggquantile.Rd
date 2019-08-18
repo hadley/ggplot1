@@ -51,4 +51,3 @@ ggquantile(m)
 \seealso{
 \code{\link[quantreg]{rq}} for the code used to fit the quantile regression
 }
-

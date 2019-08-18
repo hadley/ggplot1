@@ -23,4 +23,3 @@ p <- ggplot(mtcars, aes=list(x=mpg, y=wt, shape=cyl))
 ggpoint(p)
 ggpoint(scshape(p, FALSE))
 }
-
