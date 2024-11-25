@@ -193,7 +193,7 @@ grob_boxplot <- function(aesthetics, breaks=length(unique(aesthetics$x)), orient
 		fill =   tapply(rep(as.character(aesthetics$fill),  length=n), breakpoints, function(x) x[1])
 	)
 
-	boxes <- boxplot.weighted.formula(aesthetics$y ~ breakpoints, weights=aesthetics$weight, plot=FALSE, ...)
+	boxes <- boxplot_weighted_formula(aesthetics$y ~ breakpoints, weights=aesthetics$weight, plot=FALSE, ...)
 	# lower whisker, lower hinge, median, upper hinge and upper whisker
 
 	outliers <- list(y = boxes$out, x = as.vector(xrange$median[boxes$group]), colour="red")

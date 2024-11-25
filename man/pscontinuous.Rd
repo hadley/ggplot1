@@ -10,10 +10,27 @@
 \alias{trans_inverse}
 \title{Position: continuous
 Add a continuous position scale to the plot}
-\format{An object of class \code{list} of length 2.}
+\format{
+An object of class \code{list} of length 2.
+
+An object of class \code{list} of length 2.
+
+An object of class \code{list} of length 2.
+
+An object of class \code{list} of length 2.
+
+An object of class \code{list} of length 2.
+}
 \usage{
-pscontinuous(plot, variable = "x", name = "", transform = trans_none,
-  range = c(NA, NA), expand = c(0.05, 0), breaks = NULL)
+pscontinuous(
+  plot,
+  variable = "x",
+  name = "",
+  transform = trans_none,
+  range = c(NA, NA),
+  expand = c(0.05, 0),
+  breaks = NULL
+)
 
 trans_none
 

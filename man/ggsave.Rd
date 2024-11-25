@@ -5,10 +5,17 @@
 \title{ggsave
 Save a ggplot with sensible defaults}
 \usage{
-ggsave(plot, filename = default_name(plot),
-  device = default_device(filename), scale = 1,
-  width = graphics::par("din")[1], height = graphics::par("din")[2],
-  grid = "normal", dpi = 96, ...)
+ggsave(
+  plot,
+  filename = default_name(plot),
+  device = default_device(filename),
+  scale = 1,
+  width = graphics::par("din")[1],
+  height = graphics::par("din")[2],
+  grid = "normal",
+  dpi = 96,
+  ...
+)
 }
 \arguments{
 \item{plot}{plot to save}

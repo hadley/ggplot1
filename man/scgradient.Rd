@@ -6,11 +6,25 @@
 \title{Scale: colour gradient
 Scale a continuous variable along a colour gradient.}
 \usage{
-scgradient(plot, name = "", low = "red", mid = "white",
-  high = "black", midpoint = 0, range = c(NA, NA))
+scgradient(
+  plot,
+  name = "",
+  low = "red",
+  mid = "white",
+  high = "black",
+  midpoint = 0,
+  range = c(NA, NA)
+)
 
-scfillgradient(plot, name = "", low = "red", mid = "white",
-  high = "black", midpoint = 0, range = c(NA, NA))
+scfillgradient(
+  plot,
+  name = "",
+  low = "red",
+  mid = "white",
+  high = "black",
+  midpoint = 0,
+  range = c(NA, NA)
+)
 }
 \arguments{
 \item{plot}{plot}

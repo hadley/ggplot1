@@ -4,9 +4,14 @@
 \alias{scmanual}
 \title{Scale: manual}
 \usage{
-scmanual(plot, variable = "x", name = "", breaks = NULL,
-  labels = as.character(breaks), grob = function(x) grob_point(x,
-  unique = FALSE))
+scmanual(
+  plot,
+  variable = "x",
+  name = "",
+  breaks = NULL,
+  labels = as.character(breaks),
+  grob = function(x) grob_point(x, unique = FALSE)
+)
 }
 \arguments{
 \item{plot}{plot}
