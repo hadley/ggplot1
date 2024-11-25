@@ -5,7 +5,7 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/hadley/ggplot1/actions/workflows/R-CMD-check.yaml/badge.svghttps://github.com/hadley/ggplot1/actions/workflows/R-CMD-check.yaml/badge.svghttps://github.com/hadley/ggplot1/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/hadley/ggplot1/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/hadley/ggplot1/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/hadley/ggplot1/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 ggplot1 is an update of ggplot, the package that preceded ggplot2.

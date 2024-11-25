@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 # ggplot1
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/hadley/ggplot1/actions/workflows/R-CMD-check.yaml/badge.svghttps://github.com/hadley/ggplot1/actions/workflows/R-CMD-check.yaml/badge.svghttps://github.com/hadley/ggplot1/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/hadley/ggplot1/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/hadley/ggplot1/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/hadley/ggplot1/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 ggplot1 is an update of ggplot, the package that preceded ggplot2. ggplot1 is mostly made available out of historical interest, to illustrate how my thinking about API design in R has evolved over the years. I've made a few minor tweaks to the package, mostly fixing small things that obscure the interesting parts of the API.
