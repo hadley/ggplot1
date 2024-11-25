@@ -8,19 +8,18 @@ Description: This is the original ggplot package brought back to
 License: GPL
 URL: https://github.com/hadley/ggplot1
 BugReports: https://github.com/hadley/ggplot1/issues
-Depends: 
-    R (>= 2.10)
+Depends:
+    R (>= 4.2)
 Imports:
-    ggplot2movies,
     grid,
-    magrittr,
     MASS,
     plyr,
     RColorBrewer,
     reshape (>= 0.7.4)
 Suggests:
+    ggplot2movies,
     mapproj,
     quantreg
 Encoding: UTF-8
 LazyData: yes
-RoxygenNote: 6.1.1
+RoxygenNote: 7.3.2

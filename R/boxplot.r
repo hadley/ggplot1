@@ -3,7 +3,7 @@
 # @keyword internal
 # @alias boxplot.weighted
 # @alias boxplot_stats_weighted
-boxplot.weighted.formula <- function(formula, data = NULL, ..., weights=1, subset, na.action = NULL) {
+boxplot_weighted_formula <- function(formula, data = NULL, ..., weights=1, subset, na.action = NULL) {
     if (missing(formula) || (length(formula) != 3))
         stop("'formula' missing or incorrect")
     m <- match.call(expand.dots = FALSE)
@@ -16,10 +16,10 @@ boxplot.weighted.formula <- function(formula, data = NULL, ..., weights=1, subse
     mf <- eval(m, parent.frame())
     response <- attr(attr(mf, "terms"), "response")
 
-    boxplot.weighted(split(mf[[response]], mf[-response]), weights=split(weights, mf[-response]), ...)
+    boxplot_weighted(split(mf[[response]], mf[-response]), weights=split(weights, mf[-response]), ...)
 }
 
-boxplot.weighted <-
+boxplot_weighted <-
 function (x, weights=1, ..., range = 1.5, width = NULL, varwidth = FALSE,
     notch = FALSE, outline = TRUE, names, plot = TRUE, border = graphics::par("fg"),
     col = NULL, log = "", pars = list(boxwex = 0.8, staplewex = 0.5,

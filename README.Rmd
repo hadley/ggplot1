@@ -8,12 +8,16 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "README-"
+  fig.path = "man/figures/README-",
+  out.width = "100%"
 )
 ```
 
 # ggplot1
-[![Travis-CI Build Status](https://travis-ci.org/hadley/ggplot1.svg?branch=master)](https://travis-ci.org/hadley/ggplot1)
+
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/hadley/ggplot1/actions/workflows/R-CMD-check.yaml/badge.svghttps://github.com/hadley/ggplot1/actions/workflows/R-CMD-check.yaml/badge.svghttps://github.com/hadley/ggplot1/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/hadley/ggplot1/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
 
 ggplot1 is an update of ggplot, the package that preceded ggplot2. ggplot1 is mostly made available out of historical interest, to illustrate how my thinking about API design in R has evolved over the years.  I've made a few minor tweaks to the package, mostly fixing small things that obscure the interesting parts of the API.
 
@@ -33,12 +37,12 @@ devtools::install_github("hadley/ggplot1")
 ```{r ex}
 library(ggplot1)
 
-mtcars %>% 
-  ggplot(list(x = mpg, y = wt)) %>% 
+mtcars |>
+  ggplot(list(x = mpg, y = wt)) |>
   ggpoint()
 
-mtcars %>% 
-  ggplot(list(x = mpg, y = wt)) %>% 
-  ggpoint(list(colour = gear)) %>% 
+mtcars |>
+  ggplot(list(x = mpg, y = wt)) |>
+  ggpoint(list(colour = gear)) |>
   scbrewer()
 ```

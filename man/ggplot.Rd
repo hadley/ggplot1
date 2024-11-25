@@ -7,8 +7,7 @@
 \usage{
 ggplot(data, ...)
 
-\method{ggplot}{default}(data = NULL, aesthetics = list(),
-  formula = . ~ ., margins = FALSE, ...)
+\method{ggplot}{default}(data = NULL, aesthetics = list(), formula = . ~ ., margins = FALSE, ...)
 }
 \arguments{
 \item{data}{default data frame}
@@ -84,7 +83,7 @@ For scales that control position of the points see:
 For other scales, see:
 
 \itemize{
-	\item \code{\link{sccolour}}: colour categorical variables using Brewer colour scales (see also \'code{\link{scfill}})
+	\item \code{\link{sccolour}}: colour categorical variables using Brewer colour scales (see also \code{\link{scfill}})
 	\item \code{\link{scgradient}}: colour continuous scales with a gradient (see also \code{\link{scfillgradient}})
 	\item \code{\link{schcl}}: map continuous variable to hue, chroma or luminance components (see also \code{\link{scfillhcl}})
 	\item \code{\link{scmanual}}: no automatic conversion, uses raw values directly
@@ -124,18 +123,18 @@ ggpoint(ggplot(tips, formula = . ~ sex, aesthetics = list(y = tip, x = total_bil
 
 # Create complex plots from simple components
 p <- ggplot(tips, formula = smoker ~ sex, aesthetics = list(y = tip, x = total_bill))
-p \%>\% ggpoint()
+p |> ggpoint()
 
-p \%>\%
-  ggpoint() \%>\%
+p |>
+  ggpoint() |>
   ggsmooth()
 
-p \%>\%
-  ggpoint() \%>\%
+p |>
+  ggpoint() |>
   ggsmooth(method = lm, formula = y~x)
 
-p \%>\%
-  ggpoint() \%>\%
+p |>
+  ggpoint() |>
  ggabline(slope = c(0.1,0.15,0.2))
 
 (p2 <- ggabline(ggpoint(p, aes = list(colour = tip/total_bill)), slope = c(0.1, 0.15, 0.2)))

@@ -59,6 +59,7 @@ guides.scales <- function(scale, ...) {
 # @arguments scales object
 # @arguments data
 # @keyword internal
+#' @export
 "update<-.scales" <- function(x, value) {
 	if (is.matrix(value)) {
 		value <- do.call(plyr::rbind.fill, value)
@@ -81,6 +82,7 @@ guides.scales <- function(scale, ...) {
 # @arguments data
 # @arguments other arguments (unused)
 # @keyword internal
+#' @export
 map_aesthetic.scales <- function(scale, data, ...) {
 	if (is.list(data) && !is.data.frame(data)) data <- data[[1]]
 	if (length(scale) == 0) return(data)

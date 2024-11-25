@@ -7,7 +7,11 @@
 \alias{ggopt}
 \alias{ggtheme}
 \title{Set global options for ggplot.}
-\format{An object of class \code{list} of length 2.}
+\format{
+An object of class \code{list} of length 2.
+
+An object of class \code{list} of length 11.
+}
 \usage{
 theme_bw
 
