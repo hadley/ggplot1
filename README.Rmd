@@ -27,7 +27,9 @@ The most interesting thing about ggplot1 is that it was originally designed arou
 ggpoint(ggplot(mtcars, list(x = mpg, y = wt)))
 ```
 
-I correct recognised that this was hard for people to read and write, but solved this problem in ggplot2 by overloading addition. In hindsight, this problem is solved generally by the pipe!
+I correctly recognised that this was hard for people to read and write,
+but solved the problem in ggplot2 by overloading addition. In
+hindsight, this problem is solved more generally by the pipe!
 
 ggplot had 7 CRAN releases starting with 0.2.2 in April 2006, and finishing with 0.4.2 in October 2008.
 
